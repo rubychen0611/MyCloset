@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fSM-IU-LJE">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--搭配-->
+        <scene sceneID="YGg-Yr-Jrt">
+            <objects>
+                <viewController id="dG3-uA-VtS" customClass="MatchViewController" customModule="MyCloset" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Lbt-gh-h5n">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="yVv-IW-wc7"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="搭配" image="match" id="6QD-bl-vDo"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RNl-En-ihd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-932" y="603"/>
+        </scene>
+        <!--日历-->
+        <scene sceneID="nx5-sv-gsu">
+            <objects>
+                <viewController id="xFk-py-zPo" customClass="CalendarViewController" customModule="MyCloset" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DEm-gu-CKN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="fxq-HU-zne"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="日历" image="calendar" id="ODS-Rk-FKM"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eLx-Rv-y0D" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-199" y="70"/>
+        </scene>
+        <!--衣橱-->
+        <scene sceneID="tZ9-uF-8kL">
+            <objects>
+                <viewController id="Nzn-Mt-Vwj" customClass="ClosetViewController" customModule="MyCloset" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="a97-om-3lo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="sBe-dB-PTh"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="衣橱" image="closet" id="guo-6u-1P0"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Fa-gP-xw2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-199" y="-595"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Xgc-fs-Lie">
+            <objects>
+                <tabBarController id="fSM-IU-LJE" customClass="ViewController" customModule="MyCloset" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bCL-Y5-aXI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Nzn-Mt-Vwj" kind="relationship" relationship="viewControllers" id="oln-DU-2yg"/>
+                        <segue destination="xFk-py-zPo" kind="relationship" relationship="viewControllers" id="eeS-39-1vE"/>
+                        <segue destination="dG3-uA-VtS" kind="relationship" relationship="viewControllers" id="NlM-a3-SqT"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xDW-ha-Y1x" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1151" y="-263"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="calendar" width="24" height="24"/>
+        <image name="closet" width="24" height="24"/>
+        <image name="match" width="24" height="23"/>
+    </resources>
+</document>
