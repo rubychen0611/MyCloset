@@ -16,6 +16,7 @@
 		441B474C1FBD7E4F00D421BB /* ClosetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441B474B1FBD7E4F00D421BB /* ClosetViewController.swift */; };
 		441B474E1FBD7E6400D421BB /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441B474D1FBD7E6400D421BB /* CalendarViewController.swift */; };
 		441B47501FBD7E7D00D421BB /* MatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441B474F1FBD7E7D00D421BB /* MatchViewController.swift */; };
+		44D2329C1FBE8950002243B2 /* ContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D2329B1FBE8950002243B2 /* ContentCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		441B474B1FBD7E4F00D421BB /* ClosetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetViewController.swift; sourceTree = "<group>"; };
 		441B474D1FBD7E6400D421BB /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		441B474F1FBD7E7D00D421BB /* MatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchViewController.swift; sourceTree = "<group>"; };
+		44D2329B1FBE8950002243B2 /* ContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				441B472B1FBD7D8000D421BB /* AppDelegate.swift */,
 				441B472D1FBD7D8000D421BB /* ViewController.swift */,
 				441B474B1FBD7E4F00D421BB /* ClosetViewController.swift */,
+				44D2329B1FBE8950002243B2 /* ContentCell.swift */,
 				441B474D1FBD7E6400D421BB /* CalendarViewController.swift */,
 				441B474F1FBD7E7D00D421BB /* MatchViewController.swift */,
 				441B472F1FBD7D8000D421BB /* Main.storyboard */,
@@ -211,6 +214,7 @@
 				441B474E1FBD7E6400D421BB /* CalendarViewController.swift in Sources */,
 				441B472E1FBD7D8000D421BB /* ViewController.swift in Sources */,
 				441B472C1FBD7D8000D421BB /* AppDelegate.swift in Sources */,
+				44D2329C1FBE8950002243B2 /* ContentCell.swift in Sources */,
 				441B474C1FBD7E4F00D421BB /* ClosetViewController.swift in Sources */,
 				441B47501FBD7E7D00D421BB /* MatchViewController.swift in Sources */,
 			);
