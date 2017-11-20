@@ -30,7 +30,8 @@ class ClosetViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad()
     {
         super.viewDidLoad()
-
+        
+        tableView.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .none)
         // Do any additional setup after loading the view.
     }
 
@@ -40,51 +41,16 @@ class ClosetViewController: UIViewController, UITableViewDataSource, UITableView
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
-    //MARK:Table View 代理方法
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
-    {
-        selectIndex = indexPath.row
-        //print(selectIndex)
-        // 解决点击 TableView 后 CollectionView 的 Header 遮挡问题。
-        //scrollToTop(section: selectIndex, animated: true)
-        collectionView.scrollToItem(at: IndexPath(row: 0, section: selectIndex), at: .top, animated: true)
-        tableView.scrollToRow(at: IndexPath(row: selectIndex, section: 0), at: .top, animated: true)
-        //print(currentCellIndex)
-    }
     
-    //MARK: - 解决点击 TableView 后 CollectionView 的 Header 遮挡问题。
-    fileprivate func scrollToTop(section: Int, animated: Bool) {
-        let headerRect = frameForHeader(section: section)
-        let topOfHeader = CGPoint(x: 0, y: headerRect.origin.y - collectionView.contentInset.top)
-        collectionView.setContentOffset(topOfHeader, animated: animated)
-    }
+    //MARK: Table View 代理方法
     
-    fileprivate func frameForHeader(section: Int) -> CGRect {
-        let indexPath = IndexPath(item: 0, section: section)
-        let attributes = collectionView.collectionViewLayout.layoutAttributesForSupplementaryView(ofKind: UICollectionElementKindSectionHeader, at: indexPath)
-        guard let frameForFirstCell = attributes?.frame else {
-            return .zero
-        }
-        return frameForFirstCell;
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int //获得tableview行数
     {
         return clothestypes.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell //获得tableview cell实例
     {
         tableView.rowHeight = 70    //cell高度
         var cell = tableView.dequeueReusableCell(withIdentifier: leftTableIdentifier)
@@ -99,9 +65,37 @@ class ClosetViewController: UIViewController, UITableViewDataSource, UITableView
         return cell!
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) //点击tableview某行后的动作
+    {
+        selectIndex = indexPath.row
+        scrollToTop(section: selectIndex, animated: true)    //collection滚动至section头部， 并解决点击TableView后 CollectionView的Header遮挡问题
+        tableView.scrollToRow(at: IndexPath(row: selectIndex, section: 0), at: .top, animated: true)  //tableview滚动
+    }
+    
+    //MARK: - 解决点击 TableView 后 CollectionView 的 Header 遮挡问题。
+    private func scrollToTop(section: Int, animated: Bool) {
+        let headerRect = frameForHeader(section: section)
+        let topOfHeader = CGPoint(x: 0, y: headerRect.origin.y - collectionView.contentInset.top)
+        collectionView.setContentOffset(topOfHeader, animated: animated) //colection view 移动
+    }
+    
+    private func frameForHeader(section: Int) -> CGRect
+    {
+        let indexPath = IndexPath(item: 0, section: section)
+        let attributes = collectionView.collectionViewLayout.layoutAttributesForSupplementaryView(ofKind: UICollectionElementKindSectionHeader, at: indexPath)
+        guard let frameForFirstCell = attributes?.frame else
+        {
+            return .zero
+        }
+        return frameForFirstCell;
+    }
+    
+   
+    
     //MARK: Collection View 代理方法
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int
+    {
         return clothestypes.count //Section个数
     }
     
@@ -110,59 +104,65 @@ class ClosetViewController: UIViewController, UITableViewDataSource, UITableView
         return smalltypes[section].count //Section中Item的个数
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell //返回collection view cell实例
     {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ClosetCollectionViewCell", for: indexPath) as! ContentCell
         cell.imageView.image = UIImage(named: "defaultPhoto.png")
         cell.label.text = smalltypes[indexPath.section][indexPath.row]
         return cell
     }
-    //返回头、尾区实例
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView //返回section header实例
     {
         var reuseIdentifier : String?
-        if kind == UICollectionElementKindSectionHeader {
+        if kind == UICollectionElementKindSectionHeader
+        {
             reuseIdentifier = "CollectionReusableView"//kCollectionViewHeaderView
         }
         
-        let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: reuseIdentifier!, for: indexPath) as! ClosetCollectionReusableView
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: reuseIdentifier!, for: indexPath) as! ClosetCollectionReusableView
         
-        if kind == UICollectionElementKindSectionHeader {
+        if kind == UICollectionElementKindSectionHeader
+        {
             //let model = dataSource[indexPath.section]
            // view.setDatas(model)
-            view.label.text = clothestypes[indexPath.section]
+            header.label.text = clothestypes[indexPath.section]
         }
-        return view
+        return header
     }
     
-   /* func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: ScreenWidth, height: 30)
-    }*/
-    
+
     // CollectionView 分区标题即将展示
-    func collectionView(_ collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, at indexPath: IndexPath) {
-        // 当前 CollectionView 滚动的方向向上，CollectionView 是用户拖拽而产生滚动的（主要是判断 CollectionView 是用户拖拽而滚动的，还是点击 TableView 而滚动的）
-        if !isScrollDown && (collectionView.isDragging || collectionView.isDecelerating) {
-            selectRow(index: indexPath.section)
+    func collectionView(_ collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, at indexPath: IndexPath)
+    {
+        if !isScrollDown && (collectionView.isDragging || collectionView.isDecelerating)//滚动方向向上且用户正在拖拽或减速
+        {
+            selectRow(index: indexPath.section) //当前tableview选择改变
         }
     }
     
     // CollectionView 分区标题展示结束
-    func collectionView(_ collectionView: UICollectionView, didEndDisplayingSupplementaryView view: UICollectionReusableView, forElementOfKind elementKind: String, at indexPath: IndexPath) {
-        // 当前 CollectionView 滚动的方向向下，CollectionView 是用户拖拽而产生滚动的（主要是判断 CollectionView 是用户拖拽而滚动的，还是点击 TableView 而滚动的）
-        if isScrollDown && (collectionView.isDragging || collectionView.isDecelerating) {
-            selectRow(index: indexPath.section + 1)
+    func collectionView(_ collectionView: UICollectionView, didEndDisplayingSupplementaryView view: UICollectionReusableView, forElementOfKind elementKind: String, at indexPath: IndexPath)
+    {
+        if isScrollDown && (collectionView.isDragging || collectionView.isDecelerating) //滚动方向向下且用户正在拖拽或减速
+        {
+            if indexPath.section != clothestypes.count - 1
+            {
+                selectRow(index: indexPath.section + 1) //当前tableview选择改变
+            }
         }
     }
     
-    // 当拖动 CollectionView 的时候，处理 TableView
-    private func selectRow(index : Int) {
+    private func selectRow(index : Int)    // 当拖动 CollectionView 的时候，处理 TableView
+    {
         tableView.selectRow(at: IndexPath(row: index, section: 0), animated: true, scrollPosition: .middle)
     }
     
-    // 标记一下 CollectionView 的滚动方向，是向上还是向下
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if collectionView == scrollView {
+   
+    func scrollViewDidScroll(_ scrollView: UIScrollView)  // 标记CollectionView 的滚动方向，是向上还是向下
+    {
+        if collectionView == scrollView
+        {
             isScrollDown = lastOffsetY < scrollView.contentOffset.y
             lastOffsetY = scrollView.contentOffset.y
         }
