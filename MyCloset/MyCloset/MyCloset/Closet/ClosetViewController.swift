@@ -59,7 +59,7 @@ class ClosetViewController: UIViewController, UITableViewDataSource, UITableView
             cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier:leftTableIdentifier)
         }
         cell?.textLabel?.text = clothestypes[indexPath.row]
-        cell?.textLabel?.font = UIFont.boldSystemFont(ofSize:18) //字体、大小
+        cell?.textLabel?.font = UIFont.boldSystemFont(ofSize:16) //字体、大小
         cell?.backgroundColor = UIColor.clear //背景色透明
         cell?.textLabel?.textAlignment = NSTextAlignment.center //居中显示
         return cell!
