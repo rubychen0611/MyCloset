@@ -8,15 +8,11 @@
 
 import UIKit
 
-class ClothesViewController: UIViewController//,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
+class ClothesViewController: UIViewController,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
 {
-    /*func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-    }*/
+    //MARK:Properties
+    var clothes[Garment]()
+
   //  @IBOutlet weak var navigationItem :UINavigationItem!
    // @IBOutlet weak var addGarmentButton: UIBarButtonItem!
     override func viewDidLoad()
@@ -32,14 +28,17 @@ class ClothesViewController: UIViewController//,UICollectionViewDataSource, UICo
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    //MARK:CollectionView代理方法
+    func numberOfSections(in collectionView: UICollectionView) -> Int
+    {
+        return 1 //Section个数
     }
-    */
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return subclasses[curSelectedLargeClass].count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+    }
 
 }

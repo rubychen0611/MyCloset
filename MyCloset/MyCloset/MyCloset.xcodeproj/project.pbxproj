@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18A31C9A1FCBF6810010CF15 /* Garment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A31C991FCBF6810010CF15 /* Garment.swift */; };
+		18A31C9C1FCBFFA80010CF15 /* GarmentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A31C9B1FCBFFA80010CF15 /* GarmentCollectionViewCell.swift */; };
+		18A31C9E1FCC04D50010CF15 /* GarmentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A31C9D1FCC04D50010CF15 /* GarmentType.swift */; };
 		441B472C1FBD7D8000D421BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441B472B1FBD7D8000D421BB /* AppDelegate.swift */; };
 		441B472E1FBD7D8000D421BB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441B472D1FBD7D8000D421BB /* ViewController.swift */; };
 		441B47311FBD7D8000D421BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 441B472F1FBD7D8000D421BB /* Main.storyboard */; };
@@ -33,6 +36,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18A31C991FCBF6810010CF15 /* Garment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Garment.swift; sourceTree = "<group>"; };
+		18A31C9B1FCBFFA80010CF15 /* GarmentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarmentCollectionViewCell.swift; sourceTree = "<group>"; };
+		18A31C9D1FCC04D50010CF15 /* GarmentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarmentType.swift; sourceTree = "<group>"; };
 		441B47281FBD7D7F00D421BB /* MyCloset.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyCloset.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		441B472B1FBD7D8000D421BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		441B472D1FBD7D8000D421BB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -116,11 +122,14 @@
 		44E814661FC1A4F600A5A6EE /* Closet */ = {
 			isa = PBXGroup;
 			children = (
+				18A31C991FCBF6810010CF15 /* Garment.swift */,
+				18A31C9D1FCC04D50010CF15 /* GarmentType.swift */,
 				441B474B1FBD7E4F00D421BB /* ClosetViewController.swift */,
 				44D2329B1FBE8950002243B2 /* ContentCell.swift */,
 				44E814641FC1A4EB00A5A6EE /* ClosetCollectionReusableView.swift */,
 				44E814691FC3068A00A5A6EE /* ClothesViewController.swift */,
 				447D3F851FC963E2006F5A17 /* NewGarmentViewController.swift */,
+				18A31C9B1FCBFFA80010CF15 /* GarmentCollectionViewCell.swift */,
 			);
 			path = Closet;
 			sourceTree = "<group>";
@@ -229,10 +238,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				441B474E1FBD7E6400D421BB /* CalendarViewController.swift in Sources */,
+				18A31C9C1FCBFFA80010CF15 /* GarmentCollectionViewCell.swift in Sources */,
 				441B472E1FBD7D8000D421BB /* ViewController.swift in Sources */,
+				18A31C9A1FCBF6810010CF15 /* Garment.swift in Sources */,
 				44E814651FC1A4EB00A5A6EE /* ClosetCollectionReusableView.swift in Sources */,
 				441B472C1FBD7D8000D421BB /* AppDelegate.swift in Sources */,
 				44D2329C1FBE8950002243B2 /* ContentCell.swift in Sources */,
+				18A31C9E1FCC04D50010CF15 /* GarmentType.swift in Sources */,
 				441B474C1FBD7E4F00D421BB /* ClosetViewController.swift in Sources */,
 				447D3F861FC963E2006F5A17 /* NewGarmentViewController.swift in Sources */,
 				441B47501FBD7E7D00D421BB /* MatchViewController.swift in Sources */,

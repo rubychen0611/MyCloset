@@ -10,21 +10,13 @@ import UIKit
 
 class NewGarmentViewController: UIViewController,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource
 {
-    //MARK: Proporties
+    //MARK: Properties
     private let lefttypes = 0
     private let righttypes = 1
     private var curLeft = ""
     private var curRight = ""
     private var curLeftRow = 0
     private var curRightRow = 0
-    private let clothestypes = ["上衣","下装","外套","连衣裙","鞋子","包","配饰"]
-    private let smalltypes = [["短袖", "T袖", "衬衫", "卫衣", "马甲", "其他上衣"],
-                              ["牛仔裤","短裤","运动裤","七分裤","阔腿裤","半裙","长裙","其他下装"],
-                              ["夹克", "风衣", "大衣", "羽绒服", "棉袄", "棒球服", "其他外套"],
-                              ["短连衣裙", "长连衣裙", "其他连衣裙"],
-                              ["运动鞋", "板鞋", "休闲鞋", "靴子", "凉鞋", "皮鞋", "其他鞋子"],
-                              ["双肩包", "单肩包", "钱包", "旅行箱", "肩挎包", "其他包"],
-                              ["帽子", "围巾", "腰带", "手套", "袜子", "头饰", "其他配饰"]]
     
     @IBOutlet weak var GarmentImage: UIImageView!
     @IBOutlet weak var GarmentClassification: UIButton!
@@ -53,17 +45,36 @@ class NewGarmentViewController: UIViewController,UITextFieldDelegate,UIImagePick
     }
     
     //MARK: Actions
+   
+    /*解决键盘遮挡输入框问题*/
+    @IBAction func endEdit(_ sender: UITextField)
+    {
+         animateViewMoving(up: false, moveValue: 100)
+    }
+    @IBAction func beginEdit(_ sender: UITextField)
+    {
+        animateViewMoving(up: true, moveValue: 100)
+    }
+    func animateViewMoving (up:Bool, moveValue :CGFloat){
+        let movementDuration:TimeInterval = 0.3
+        let movement:CGFloat = ( up ? -moveValue : moveValue)
+        UIView.beginAnimations( "animateView", context: nil)
+        UIView.setAnimationBeginsFromCurrentState(true)
+        UIView.setAnimationDuration(movementDuration )
+        self.view.frame = self.view.frame.offsetBy(dx: 0,  dy: movement)
+        UIView.commitAnimations()
+    }
     
-    @IBAction func OnClassificationButtonPressed(_ sender: UIButton) //设置季节按钮动作
+    @IBAction func OnClassificationButtonPressed(_ sender: UIButton) //设置分类按钮动作
     {
         let ClassificationPickerSheet = UIAlertController(title:"\n\n\n\n\n\n\n\n\n\n",message: nil, preferredStyle:.actionSheet)
         let doublePicker = UIPickerView()
         doublePicker.delegate = self
         doublePicker.dataSource = self
-        //curLeftRow = doublePicker.selectedRow(inComponent: lefttypes)
-        //curRightRow = doublePicker.selectedRow(inComponent:righttypes)
-        //let left = clothestypes[curLeftRow]
-        //let right = smalltypes[curLeftRow][curRightRow]
+        curLeftRow = doublePicker.selectedRow(inComponent: lefttypes)
+        curRightRow = doublePicker.selectedRow(inComponent:righttypes)
+        curLeft = clothestypes[curLeftRow]
+        curRight = smalltypes[curLeftRow][curRightRow]
         
         let SelectClassification = UIAlertAction(title: "选择分类", style: UIAlertActionStyle.default, handler: {action in
             self.GarmentClassification.setTitle("\(self.curLeft) > \(self.curRight)", for:UIControlState.normal)})
@@ -175,11 +186,11 @@ class NewGarmentViewController: UIViewController,UITextFieldDelegate,UIImagePick
     {
         if component == lefttypes
         {
-            return clothestypes.count
+            return largeclasses.count
         }
         else
         {
-            return smalltypes[curLeftRow].count
+            return subclasses[curLeftRow].count
         }
     }
     
@@ -187,11 +198,11 @@ class NewGarmentViewController: UIViewController,UITextFieldDelegate,UIImagePick
     {
         if component == lefttypes
         {
-            return clothestypes[row]
+            return largeclasses[row]
         }
         else
         {
-            return smalltypes[curLeftRow][row]
+            return subclasses[curLeftRow][row]
         }
     }
      func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
@@ -201,8 +212,12 @@ class NewGarmentViewController: UIViewController,UITextFieldDelegate,UIImagePick
             curLeftRow = row
             pickerView.reloadComponent(righttypes)
         }
-        curLeft = clothestypes[curLeftRow]
-        curRight = smalltypes[curLeftRow][curRightRow]
+        else
+        {
+            curRightRow = row
+        }
+        curLeft = largeclasses[curLeftRow]
+        curRight = subclasses[curLeftRow][curRightRow]
         
     }
     

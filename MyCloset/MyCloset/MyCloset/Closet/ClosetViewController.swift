@@ -15,14 +15,7 @@ class ClosetViewController: UIViewController, UITableViewDataSource, UITableView
     private var selectIndex  = 0
     private var isScrollDown = true
     private var lastOffsetY : CGFloat = 0.0
-    private let clothestypes = ["上衣","下装","外套","连衣裙","鞋子","包","配饰"]
-    private let smalltypes = [["短袖", "T袖", "衬衫", "卫衣", "马甲", "其他上衣"],
-                              ["牛仔裤","短裤","运动裤","七分裤","阔腿裤","半裙","长裙","其他下装"],
-                              ["夹克", "风衣", "大衣", "羽绒服", "棉袄", "棒球服", "其他外套"],
-                              ["短连衣裙", "长连衣裙", "其他连衣裙"],
-                              ["运动鞋", "板鞋", "休闲鞋", "靴子", "凉鞋", "皮鞋", "其他鞋子"],
-                              ["双肩包", "单肩包", "钱包", "旅行箱", "肩挎包", "其他包"],
-                              ["帽子", "围巾", "腰带", "手套", "袜子", "头饰", "其他配饰"]]
+   
     let leftTableIdentifier = "leftTableleftTableIdentifier"
     let rightTableIdentifier = "rightTableleftTableIdentifier"
     
@@ -47,7 +40,7 @@ class ClosetViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int //获得tableview行数
     {
-        return clothestypes.count
+        return largeclasses.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell //获得tableview cell实例
@@ -58,7 +51,7 @@ class ClosetViewController: UIViewController, UITableViewDataSource, UITableView
         {
             cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier:leftTableIdentifier)
         }
-        cell?.textLabel?.text = clothestypes[indexPath.row]
+        cell?.textLabel?.text = largeclasses[indexPath.row]
         cell?.textLabel?.font = UIFont.boldSystemFont(ofSize:16) //字体、大小
         cell?.backgroundColor = UIColor.clear //背景色透明
         cell?.textLabel?.textAlignment = NSTextAlignment.center //居中显示
@@ -96,19 +89,19 @@ class ClosetViewController: UIViewController, UITableViewDataSource, UITableView
     
     func numberOfSections(in collectionView: UICollectionView) -> Int
     {
-        return clothestypes.count //Section个数
+        return largeclasses.count //Section个数
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
-        return smalltypes[section].count //Section中Item的个数
+        return subclasses[section].count //Section中Item的个数
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell //返回collection view cell实例
     {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ClosetCollectionViewCell", for: indexPath) as! ContentCell
         cell.imageView.image = UIImage(named: "defaultPhoto.png")
-        cell.label.text = smalltypes[indexPath.section][indexPath.row]
+        cell.label.text = subclasses[indexPath.section][indexPath.row]
         return cell
     }
     
@@ -126,7 +119,7 @@ class ClosetViewController: UIViewController, UITableViewDataSource, UITableView
         {
             //let model = dataSource[indexPath.section]
            // view.setDatas(model)
-            header.label.text = clothestypes[indexPath.section]
+            header.label.text = largeclasses[indexPath.section]
         }
         return header
     }
@@ -146,7 +139,7 @@ class ClosetViewController: UIViewController, UITableViewDataSource, UITableView
     {
         if isScrollDown && (collectionView.isDragging || collectionView.isDecelerating) //滚动方向向下且用户正在拖拽或减速
         {
-            if indexPath.section != clothestypes.count - 1
+            if indexPath.section != largeclasses.count - 1
             {
                 selectRow(index: indexPath.section + 1) //当前tableview选择改变
             }
