@@ -9,30 +9,49 @@
 import UIKit
 import os.log
 
-var ifAddingNewGarment = false;
+
+//var ifAddingNewGarment = false;
 
 class ClothesViewController: UIViewController,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
 {
     //MARK:Properties
-    var closet = Array<Array<Array<Garment>>>()
     
+    var closet: [[[Garment]]] = []
 
     @IBOutlet weak var collectionView: UICollectionView!
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
-        ifAddingNewGarment = false
         
-        for i in 0...largeclasses.count-1
+        /*for i in 0...largeclasses.count-1
         {
             closet.append(Array<Array<Garment>>())
             for _ in 0...subclasses[i].count-1
             {
                 closet[i].append(Array<Garment>())
             }
+        }*/
+        //navigationItem.leftBarButtonItem = editButtonItem
+        
+        if let savedClothes = loadClothes()
+        {
+            closet = savedClothes
         }
-        loadSampleGarments()
+        else
+        {
+            closet = Array<Array<Array<Garment>>>()
+            for i in 0...largeclasses.count-1
+            {
+                closet.append(Array<Array<Garment>>())
+                for _ in 0...subclasses[i].count-1
+                {
+                    closet[i].append(Array<Garment>())
+                }
+            }
+            loadSampleGarments()
+        }
+        
         self.title = subclasses[curSelectedLargeClass][curSelectedSubclass]
         
         // Do any additional setup after loading the view.
@@ -61,6 +80,20 @@ class ClothesViewController: UIViewController,UICollectionViewDataSource, UIColl
         return cell
     }
     
+    //MARK: Private methods
+    private func saveClothes()
+    {
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(closet, toFile: Garment.ArchiveURL.path)
+        if isSuccessfulSave {
+            os_log("Clothes successfully saved.", log: OSLog.default, type: .debug)
+        } else {
+            os_log("Failed to save clothes...", log: OSLog.default, type: .error)
+        }
+    }
+    private func loadClothes() -> [[[Garment]]]?  {
+        return NSKeyedUnarchiver.unarchiveObject(withFile: Garment.ArchiveURL.path) as? [[[Garment]]]
+    }
+
     //MARK: Actions
     
     @IBAction func unwindToClothesList(sender: UIStoryboardSegue)
@@ -85,6 +118,7 @@ class ClothesViewController: UIViewController,UICollectionViewDataSource, UIColl
                 collectionView.insertItems(at: [newIndexPath])
                 
             }
+                saveClothes()
             }
         }
     }

@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fSM-IU-LJE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fSM-IU-LJE">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -198,9 +197,11 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="m8D-3p-Fpf">
                                                     <rect key="frame" x="10" y="10" width="160" height="160"/>
+                                                    <gestureRecognizers/>
                                                 </imageView>
                                             </subviews>
                                         </view>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstItem="m8D-3p-Fpf" firstAttribute="leading" secondItem="9sQ-UN-8Ra" secondAttribute="leading" constant="10" id="9At-6E-vkP"/>
                                             <constraint firstItem="m8D-3p-Fpf" firstAttribute="top" secondItem="9sQ-UN-8Ra" secondAttribute="top" constant="10" id="AHn-B7-D0T"/>
@@ -220,6 +221,7 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="kZ6-Uq-K8p" firstAttribute="top" secondItem="7Td-0R-B8j" secondAttribute="top" id="Cst-sG-yJh"/>
                             <constraint firstItem="kZ6-Uq-K8p" firstAttribute="trailing" secondItem="ZGv-Fp-DiK" secondAttribute="trailingMargin" id="GGL-VA-hvz"/>
@@ -229,14 +231,11 @@
                         <viewLayoutGuide key="safeArea" id="7Td-0R-B8j"/>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="T95-S7-0vb">
-                        <rightBarButtonItems>
-                            <barButtonItem systemItem="add" id="7FI-Qp-d4I">
-                                <connections>
-                                    <segue destination="ehr-UI-WRf" kind="presentation" identifier="AddItem" id="Rli-Q8-DH8"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem systemItem="edit" id="Qlw-xy-OcS"/>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="7FI-Qp-d4I">
+                            <connections>
+                                <segue destination="ehr-UI-WRf" kind="presentation" identifier="AddItem" id="Rli-Q8-DH8"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -273,40 +272,40 @@
                                         <rect key="frame" x="0.0" y="293" width="283" height="316"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Cag-7c-oaF">
-                                                <rect key="frame" x="0.0" y="0.0" width="76.333333333333329" height="316"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="76.333333333333343" height="316"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="分类*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hif-EJ-TDC">
-                                                        <rect key="frame" x="0.0" y="0.0" width="76.333333333333329" height="40.333333333333336"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="76.333333333333343" height="40.333333333333314"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="季节*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="POX-kT-6cJ">
-                                                        <rect key="frame" x="0.0" y="55.333333333333314" width="76.333333333333329" height="40"/>
+                                                        <rect key="frame" x="0.0" y="55.333333333333314" width="76.333333333333343" height="40"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="品牌" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SMA-Ah-y6X">
-                                                        <rect key="frame" x="0.0" y="110.3333333333333" width="76.333333333333329" height="40.333333333333329"/>
+                                                        <rect key="frame" x="0.0" y="110.33333333333331" width="76.333333333333343" height="40.333333333333314"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="价格" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7L7-93-Za3">
-                                                        <rect key="frame" x="0.0" y="165.66666666666663" width="76.333333333333329" height="40"/>
+                                                        <rect key="frame" x="0.0" y="165.66666666666663" width="76.333333333333343" height="40"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="买入时间" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m0F-QU-Atf">
-                                                        <rect key="frame" x="0.0" y="220.66666666666663" width="76.333333333333329" height="40.333333333333314"/>
+                                                        <rect key="frame" x="0.0" y="220.66666666666663" width="76.333333333333343" height="40.333333333333371"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="备注" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v1f-Rh-uV3">
-                                                        <rect key="frame" x="0.0" y="276" width="76.333333333333329" height="40"/>
+                                                        <rect key="frame" x="0.0" y="276" width="76.333333333333343" height="40"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>

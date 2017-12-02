@@ -111,26 +111,26 @@ class NewGarmentViewController: UIViewController,UITextFieldDelegate,UIImagePick
         garment = Garment(photo: photo!, largeclass:largeclass, subclass: subclass, season: season, brand: brand, price : price, boughtdate: boughtdate, extrainfo: extrainfo)
     }
     //MARK: Actions
-    @IBAction func cancel(_ sender: UIBarButtonItem)
+    @IBAction func cancel(_ sender: UIBarButtonItem) //判断有问题未解决！！
     {
        // print(presentingViewController)
        // print("deinit: \(NSStringFromClass(type(of: self.presentingViewController) as! AnyClass))")
-        let pvc = presentingViewController
-        let isPresentingInAddGarmentMode = presentingViewController is UINavigationController //判断是否正添加新衣服
+        dismiss(animated: true, completion: nil)
+       /* let isPresentingInAddGarmentMode = presentingViewController is UINavigationController //判断是否正添加新衣服
         
        if isPresentingInAddGarmentMode
         {
             dismiss(animated: true, completion: nil)
         }
-        else
+        else*/
         if let owningNavigationController = navigationController
         {
            owningNavigationController.popViewController(animated: true)
         }
-        else
+        /*else
         {
             fatalError("The NegGarmentViewController is not inside a navigation controller.")
-        }
+        }*/
     }
     
     /*解决键盘遮挡输入框问题*/
