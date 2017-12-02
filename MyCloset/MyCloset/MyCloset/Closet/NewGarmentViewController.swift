@@ -114,23 +114,23 @@ class NewGarmentViewController: UIViewController,UITextFieldDelegate,UIImagePick
     @IBAction func cancel(_ sender: UIBarButtonItem)
     {
        // print(presentingViewController)
-        //let isPresentingInAddGarmentMode = presentingViewController is UINavigationController //判断是否正添加新衣服
+       // print("deinit: \(NSStringFromClass(type(of: self.presentingViewController) as! AnyClass))")
+        let pvc = presentingViewController
+        let isPresentingInAddGarmentMode = presentingViewController is UINavigationController //判断是否正添加新衣服
         
-      // if isPresentingInAddGarmentMode
-      //  {
-      //      dismiss(animated: true, completion: nil)
-      //  }
-       // else
-      //  if let owningNavigationController = navigationController
-       // {
-       //     owningNavigationController.popViewController(animated: true)
-        navigationController?.popViewController(animated:true)
-      //  }
-      //  else
-     //   {
-         //   dismiss(animated: true, completion: nil)
-            //fatalError("The NegGarmentViewController is not inside a navigation controller.")
-      //  }
+       if isPresentingInAddGarmentMode
+        {
+            dismiss(animated: true, completion: nil)
+        }
+        else
+        if let owningNavigationController = navigationController
+        {
+           owningNavigationController.popViewController(animated: true)
+        }
+        else
+        {
+            fatalError("The NegGarmentViewController is not inside a navigation controller.")
+        }
     }
     
     /*解决键盘遮挡输入框问题*/
@@ -227,7 +227,7 @@ class NewGarmentViewController: UIViewController,UITextFieldDelegate,UIImagePick
     func textFieldShouldReturn(_ textField: UITextField) -> Bool
     {
         // Hide the keyboard.
-        textField.becomeFirstResponder()
+       // textField.becomeFirstResponder()
         textField.resignFirstResponder()
         return true
     }

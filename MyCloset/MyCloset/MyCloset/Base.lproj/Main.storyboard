@@ -209,7 +209,7 @@
                                         </constraints>
                                         <connections>
                                             <outlet property="photoImageView" destination="m8D-3p-Fpf" id="rqR-le-CAr"/>
-                                            <segue destination="Ov1-5U-Pru" kind="show" identifier="ShowDetail" id="OLf-t1-Yc5"/>
+                                            <segue destination="Ov1-5U-Pru" kind="show" identifier="ShowDetail" id="qz3-om-LYA"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -232,7 +232,7 @@
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="7FI-Qp-d4I">
                                 <connections>
-                                    <segue destination="vfz-lO-MTt" kind="presentation" identifier="AddItem" id="ty2-S1-Jqw"/>
+                                    <segue destination="ehr-UI-WRf" kind="presentation" identifier="AddItem" id="Rli-Q8-DH8"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem systemItem="edit" id="Qlw-xy-OcS"/>
@@ -425,7 +425,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3086" y="-754"/>
+            <point key="canvasLocation" x="3480" y="-779"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Xgc-fs-Lie">
@@ -447,22 +447,22 @@
             <point key="canvasLocation" x="-1151" y="-263"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="LJP-gS-vtA">
+        <scene sceneID="xNR-V2-EbF">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kYU-xN-nZH" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vfz-lO-MTt" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ehr-UI-WRf" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="XJe-ra-Hjl">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zrb-23-9Qg">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Ov1-5U-Pru" kind="relationship" relationship="rootViewController" id="IUj-fE-h2K"/>
+                        <segue destination="Ov1-5U-Pru" kind="relationship" relationship="rootViewController" id="1Db-Ui-9Ua"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gfi-Fo-s61" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2229" y="-1053"/>
+            <point key="canvasLocation" x="2433" y="-1214"/>
         </scene>
     </scenes>
     <resources>
@@ -472,6 +472,6 @@
         <image name="match" width="24" height="23"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="OLf-t1-Yc5"/>
+        <segue reference="qz3-om-LYA"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -8,16 +8,21 @@
 
 import UIKit
 import os.log
+
+var ifAddingNewGarment = false;
+
 class ClothesViewController: UIViewController,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
 {
     //MARK:Properties
     var closet = Array<Array<Array<Garment>>>()
-
+    
 
     @IBOutlet weak var collectionView: UICollectionView!
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        ifAddingNewGarment = false
         
         for i in 0...largeclasses.count-1
         {
@@ -57,11 +62,15 @@ class ClothesViewController: UIViewController,UICollectionViewDataSource, UIColl
     }
     
     //MARK: Actions
+    
     @IBAction func unwindToClothesList(sender: UIStoryboardSegue)
     {
         if let sourceViewController = sender.source as? NewGarmentViewController, let garment = sourceViewController.garment
         {
+           
             if let selectedIndexPath = collectionView.indexPathsForSelectedItems
+            {
+            if !selectedIndexPath.isEmpty
             {
                 // Update an existing garment.
                 closet[curSelectedLargeClass][curSelectedSubclass][selectedIndexPath[0].row] = garment
@@ -75,6 +84,7 @@ class ClothesViewController: UIViewController,UICollectionViewDataSource, UIColl
             closet[garment.largeclass][garment.subclass].append(garment)
                 collectionView.insertItems(at: [newIndexPath])
                 
+            }
             }
         }
     }
