@@ -16,8 +16,8 @@ class NewGarmentViewController: UIViewController,UITextFieldDelegate,UIImagePick
     private let righttypes = 1
     private var curLeft = ""
     private var curRight = ""
-    private var curLeftRow = 0
-    private var curRightRow = 0
+    private var curLeftRow = curSelectedLargeClass
+    private var curRightRow = curSelectedSubclass
     private var curDate: Date? = nil
     
     @IBOutlet weak var SaveButton: UIBarButtonItem!

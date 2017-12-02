@@ -10,12 +10,12 @@ import Foundation
 import UIKit
 import os.log
 
-enum Season
+enum Season :String
 {
-    case any
-    case springautumn
-    case summer
-    case winter
+    case any = "任意"
+    case springautumn = "春秋"
+    case summer = "夏"
+    case winter = "冬"
 }
 
 class Garment :NSObject, NSCoding //单件衣服
@@ -66,23 +66,15 @@ class Garment :NSObject, NSCoding //单件衣服
     //MARK:NSCoding
     func encode(with aCoder: NSCoder)
     {
-        /*aCoder.encode(photo, forKey: PropertyKey.photo)
+        aCoder.encode(photo, forKey: PropertyKey.photo)
         aCoder.encode(largeclass, forKey: PropertyKey.largeclass)
         aCoder.encode(subclass, forKey: PropertyKey.subclass)
-        aCoder.encode(season, forKey: PropertyKey.season)
+        aCoder.encode(season.rawValue, forKey: PropertyKey.season)
         aCoder.encode(brand, forKey: PropertyKey.brand)
         aCoder.encode(price, forKey: PropertyKey.price)
         aCoder.encode(boughtdate, forKey: PropertyKey.boughtdate)
-        aCoder.encode(extrainfo, forKey: PropertyKey.extrainfo)*/
-        
-        aCoder.encode(photo, forKey: "photo")
-        aCoder.encode(largeclass, forKey: "largeclass")
-        aCoder.encode(subclass, forKey: "subclass")
-        aCoder.encode(season, forKey: "season")
-        aCoder.encode(brand, forKey: "brand")
-        aCoder.encode(price, forKey: "price")
-        aCoder.encode(boughtdate, forKey:"boughtdate")
-        aCoder.encode(extrainfo, forKey: "extrainfo")
+        aCoder.encode(extrainfo, forKey: PropertyKey.extrainfo)
+
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
@@ -96,13 +88,13 @@ class Garment :NSObject, NSCoding //单件衣服
         }
         let largeclass = aDecoder.decodeInteger(forKey: PropertyKey.largeclass)
         let subclass = aDecoder.decodeInteger(forKey: PropertyKey.subclass)
-        let season = aDecoder.decodeObject(forKey:PropertyKey.season) as? Season
+        let season = Season(rawValue: (aDecoder.decodeObject(forKey:PropertyKey.season) as! String)) ?? .any //aDecoder.decodeObject(forKey:PropertyKey.season) as? Season
         let brand = aDecoder.decodeObject(forKey:PropertyKey.brand) as? String
         let price = aDecoder.decodeObject(forKey:PropertyKey.price) as? String
         let boughtdate = aDecoder.decodeObject(forKey:PropertyKey.boughtdate) as? Date
         let extrainfo = aDecoder.decodeObject(forKey:PropertyKey.extrainfo) as? String
         // Must call designated initializer.
-        self.init(photo: photo, largeclass:largeclass, subclass:subclass, season:season!, brand:brand!,price:price!, boughtdate:boughtdate,extrainfo:extrainfo!)
+        self.init(photo: photo, largeclass:largeclass, subclass:subclass, season:season, brand:brand!,price:price!, boughtdate:boughtdate,extrainfo:extrainfo!)
         
     }
 }

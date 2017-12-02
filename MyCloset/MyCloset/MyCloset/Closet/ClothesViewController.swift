@@ -114,7 +114,7 @@ class ClothesViewController: UIViewController,UICollectionViewDataSource, UIColl
             // Add a new garment
             let newIndexPath = IndexPath(row: closet[curSelectedLargeClass][curSelectedSubclass].count, section: 0)
             
-            closet[garment.largeclass][garment.subclass].append(garment)
+                  closet[garment.largeclass][garment.subclass].append(garment)
                 collectionView.insertItems(at: [newIndexPath])
                 
             }
