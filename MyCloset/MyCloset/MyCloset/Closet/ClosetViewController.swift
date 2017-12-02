@@ -12,6 +12,9 @@ class ClosetViewController: UIViewController, UITableViewDataSource, UITableView
 {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var collectionView:UICollectionView!
+    
+   
+    
     private var selectIndex  = 0
     private var isScrollDown = true
     private var lastOffsetY : CGFloat = 0.0
@@ -23,6 +26,8 @@ class ClosetViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+       
         
         tableView.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .none)
         // Do any additional setup after loading the view.
@@ -61,6 +66,7 @@ class ClosetViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) //点击tableview某行后的动作
     {
         selectIndex = indexPath.row
+        curSelectedLargeClass = indexPath.row
         scrollToTop(section: selectIndex, animated: true)    //collection滚动至section头部， 并解决点击TableView后 CollectionView的Header遮挡问题
         tableView.scrollToRow(at: IndexPath(row: selectIndex, section: 0), at: .top, animated: true)  //tableview滚动
     }
@@ -104,7 +110,10 @@ class ClosetViewController: UIViewController, UITableViewDataSource, UITableView
         cell.label.text = subclasses[indexPath.section][indexPath.row]
         return cell
     }
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
+    {
+        curSelectedSubclass = indexPath.row
+    }
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView //返回section header实例
     {
         var reuseIdentifier : String?

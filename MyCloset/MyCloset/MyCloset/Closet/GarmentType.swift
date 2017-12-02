@@ -9,7 +9,9 @@
 import Foundation
 //class GarmentType
 //{
+    var closet = Array<Array<Array<Garment>>>()
     var curSelectedLargeClass = 0
+    var curSelectedSubclass = 0
     public let largeclasses = ["上衣","下装","外套","连衣裙","鞋子","包","配饰"]
     public let subclasses = [["短袖", "T袖", "衬衫", "卫衣", "马甲", "其他上衣"],
                              ["牛仔裤","短裤","运动裤","七分裤","阔腿裤","半裙","长裙","其他下装"],
