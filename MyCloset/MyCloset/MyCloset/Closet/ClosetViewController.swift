@@ -54,6 +54,11 @@ class ClosetViewController: UIViewController, UITableViewDataSource, UITableView
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(_ animated: Bool)
+    {
+        closet = loadClothes()!
+        collectionView.reloadData()
+    }
     
     //Mark: Private methods
     private func loadClothes() -> [[[Garment]]]?
@@ -138,6 +143,7 @@ class ClosetViewController: UIViewController, UITableViewDataSource, UITableView
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
+        curSelectedLargeClass = indexPath.section
         curSelectedSubclass = indexPath.row
     }
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView //返回section header实例
