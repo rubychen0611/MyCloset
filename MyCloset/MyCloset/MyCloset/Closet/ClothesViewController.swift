@@ -17,7 +17,7 @@ class ClothesViewController: UIViewController,UICollectionViewDataSource, UIColl
     //MARK:Properties
     
     var closet: [[[Garment]]] = []
-
+   // var garment :Garment
     @IBOutlet weak var collectionView: UICollectionView!
     override func viewDidLoad()
     {
@@ -70,6 +70,7 @@ class ClothesViewController: UIViewController,UICollectionViewDataSource, UIColl
         return 1 //Section个数
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print(closet[curSelectedLargeClass][curSelectedSubclass].count)
         return closet[curSelectedLargeClass][curSelectedSubclass].count
     }
     
@@ -112,10 +113,11 @@ class ClothesViewController: UIViewController,UICollectionViewDataSource, UIColl
             else
             {
             // Add a new garment
-            let newIndexPath = IndexPath(row: closet[curSelectedLargeClass][curSelectedSubclass].count, section: 0)
+           // let newIndexPath = IndexPath(row: closet[garment.largeclass][garment.subclass].count, section: 0)
             
-                  closet[garment.largeclass][garment.subclass].append(garment)
-                collectionView.insertItems(at: [newIndexPath])
+                closet[garment.largeclass][garment.subclass].append(garment)
+               collectionView.reloadData()
+               // collectionView.insertItems(at: [newIndexPath])
                 
             }
                 saveClothes()

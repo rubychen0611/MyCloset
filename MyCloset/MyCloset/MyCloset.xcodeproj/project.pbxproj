@@ -19,6 +19,8 @@
 		441B474C1FBD7E4F00D421BB /* ClosetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441B474B1FBD7E4F00D421BB /* ClosetViewController.swift */; };
 		441B474E1FBD7E6400D421BB /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441B474D1FBD7E6400D421BB /* CalendarViewController.swift */; };
 		441B47501FBD7E7D00D421BB /* MatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441B474F1FBD7E7D00D421BB /* MatchViewController.swift */; };
+		441F60591FD3FA7D00331F80 /* GCCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 441F60561FD3FA4C00331F80 /* GCCalendar.framework */; };
+		441F605A1FD3FA7D00331F80 /* GCCalendar.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 441F60561FD3FA4C00331F80 /* GCCalendar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		447D3F861FC963E2006F5A17 /* NewGarmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447D3F851FC963E2006F5A17 /* NewGarmentViewController.swift */; };
 		44D2329C1FBE8950002243B2 /* ContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D2329B1FBE8950002243B2 /* ContentCell.swift */; };
 		44E814651FC1A4EB00A5A6EE /* ClosetCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E814641FC1A4EB00A5A6EE /* ClosetCollectionReusableView.swift */; };
@@ -33,7 +35,42 @@
 			remoteGlobalIDString = 441B47271FBD7D7F00D421BB;
 			remoteInfo = MyCloset;
 		};
+		441F60551FD3FA4C00331F80 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 441F60501FD3FA4C00331F80 /* GCCalendar.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E2EF54D51C5AA64800E93F85;
+			remoteInfo = GCCalendar;
+		};
+		441F60571FD3FA4C00331F80 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 441F60501FD3FA4C00331F80 /* GCCalendar.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E29559AE1CA0CC5A00A5F429;
+			remoteInfo = GCCalendarTests;
+		};
+		441F605B1FD3FA7D00331F80 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 441F60501FD3FA4C00331F80 /* GCCalendar.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = E2EF54D41C5AA64800E93F85;
+			remoteInfo = GCCalendar;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		441F605D1FD3FA7D00331F80 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				441F605A1FD3FA7D00331F80 /* GCCalendar.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		18A31C991FCBF6810010CF15 /* Garment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Garment.swift; sourceTree = "<group>"; };
@@ -52,6 +89,7 @@
 		441B474B1FBD7E4F00D421BB /* ClosetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetViewController.swift; sourceTree = "<group>"; };
 		441B474D1FBD7E6400D421BB /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		441B474F1FBD7E7D00D421BB /* MatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchViewController.swift; sourceTree = "<group>"; };
+		441F60501FD3FA4C00331F80 /* GCCalendar.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GCCalendar.xcodeproj; path = GCCalendar/GCCalendar.xcodeproj; sourceTree = "<group>"; };
 		447D3F851FC963E2006F5A17 /* NewGarmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGarmentViewController.swift; sourceTree = "<group>"; };
 		44D2329B1FBE8950002243B2 /* ContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCell.swift; sourceTree = "<group>"; };
 		44E814641FC1A4EB00A5A6EE /* ClosetCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetCollectionReusableView.swift; sourceTree = "<group>"; };
@@ -63,6 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				441F60591FD3FA7D00331F80 /* GCCalendar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +118,7 @@
 		441B471F1FBD7D7F00D421BB = {
 			isa = PBXGroup;
 			children = (
+				441F60501FD3FA4C00331F80 /* GCCalendar.xcodeproj */,
 				441B472A1FBD7D7F00D421BB /* MyCloset */,
 				441B473F1FBD7D8000D421BB /* MyClosetTests */,
 				441B47291FBD7D7F00D421BB /* Products */,
@@ -97,10 +137,10 @@
 		441B472A1FBD7D7F00D421BB /* MyCloset */ = {
 			isa = PBXGroup;
 			children = (
+				441F605E1FD4107900331F80 /* Calendar */,
 				44E814661FC1A4F600A5A6EE /* Closet */,
 				441B472B1FBD7D8000D421BB /* AppDelegate.swift */,
 				441B472D1FBD7D8000D421BB /* ViewController.swift */,
-				441B474D1FBD7E6400D421BB /* CalendarViewController.swift */,
 				441B474F1FBD7E7D00D421BB /* MatchViewController.swift */,
 				441B472F1FBD7D8000D421BB /* Main.storyboard */,
 				441B47321FBD7D8000D421BB /* Assets.xcassets */,
@@ -117,6 +157,23 @@
 				441B47421FBD7D8000D421BB /* Info.plist */,
 			);
 			path = MyClosetTests;
+			sourceTree = "<group>";
+		};
+		441F60511FD3FA4C00331F80 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				441F60561FD3FA4C00331F80 /* GCCalendar.framework */,
+				441F60581FD3FA4C00331F80 /* GCCalendarTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		441F605E1FD4107900331F80 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				441B474D1FBD7E6400D421BB /* CalendarViewController.swift */,
+			);
+			path = Calendar;
 			sourceTree = "<group>";
 		};
 		44E814661FC1A4F600A5A6EE /* Closet */ = {
@@ -144,10 +201,12 @@
 				441B47241FBD7D7F00D421BB /* Sources */,
 				441B47251FBD7D7F00D421BB /* Frameworks */,
 				441B47261FBD7D7F00D421BB /* Resources */,
+				441F605D1FD3FA7D00331F80 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				441F605C1FD3FA7D00331F80 /* PBXTargetDependency */,
 			);
 			name = MyCloset;
 			productName = MyCloset;
@@ -204,6 +263,12 @@
 			mainGroup = 441B471F1FBD7D7F00D421BB;
 			productRefGroup = 441B47291FBD7D7F00D421BB /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 441F60511FD3FA4C00331F80 /* Products */;
+					ProjectRef = 441F60501FD3FA4C00331F80 /* GCCalendar.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				441B47271FBD7D7F00D421BB /* MyCloset */,
@@ -211,6 +276,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		441F60561FD3FA4C00331F80 /* GCCalendar.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = GCCalendar.framework;
+			remoteRef = 441F60551FD3FA4C00331F80 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		441F60581FD3FA4C00331F80 /* GCCalendarTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = GCCalendarTests.xctest;
+			remoteRef = 441F60571FD3FA4C00331F80 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		441B47261FBD7D7F00D421BB /* Resources */ = {
@@ -267,6 +349,11 @@
 			isa = PBXTargetDependency;
 			target = 441B47271FBD7D7F00D421BB /* MyCloset */;
 			targetProxy = 441B473D1FBD7D8000D421BB /* PBXContainerItemProxy */;
+		};
+		441F605C1FD3FA7D00331F80 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GCCalendar;
+			targetProxy = 441F605B1FD3FA7D00331F80 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -400,10 +487,12 @@
 		441B47461FBD7D8000D421BB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2VWVJ436YF;
 				INFOPLIST_FILE = MyCloset/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.edu.nju.MyCloset;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -415,10 +504,12 @@
 		441B47471FBD7D8000D421BB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2VWVJ436YF;
 				INFOPLIST_FILE = MyCloset/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.edu.nju.MyCloset;
 				PRODUCT_NAME = "$(TARGET_NAME)";

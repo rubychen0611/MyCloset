@@ -56,8 +56,11 @@ class ClosetViewController: UIViewController, UITableViewDataSource, UITableView
     
     override func viewWillAppear(_ animated: Bool)
     {
-        closet = loadClothes()!
-        collectionView.reloadData()
+        if let closetcopy = loadClothes()
+        {
+            closet = closetcopy
+            collectionView.reloadData()
+        }
     }
     
     //Mark: Private methods
