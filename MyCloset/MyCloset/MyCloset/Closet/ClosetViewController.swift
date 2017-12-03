@@ -27,7 +27,7 @@ class ClosetViewController: UIViewController, UITableViewDataSource, UITableView
     {
         super.viewDidLoad()
         
-       
+
         if let savedClothes = loadClothes()
         {
             closet = savedClothes
