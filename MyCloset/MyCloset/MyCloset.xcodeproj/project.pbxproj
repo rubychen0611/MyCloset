@@ -19,8 +19,6 @@
 		441B474C1FBD7E4F00D421BB /* ClosetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441B474B1FBD7E4F00D421BB /* ClosetViewController.swift */; };
 		441B474E1FBD7E6400D421BB /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441B474D1FBD7E6400D421BB /* CalendarViewController.swift */; };
 		441B47501FBD7E7D00D421BB /* MatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441B474F1FBD7E7D00D421BB /* MatchViewController.swift */; };
-		441F60591FD3FA7D00331F80 /* GCCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 441F60561FD3FA4C00331F80 /* GCCalendar.framework */; };
-		441F605A1FD3FA7D00331F80 /* GCCalendar.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 441F60561FD3FA4C00331F80 /* GCCalendar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		447D3F861FC963E2006F5A17 /* NewGarmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447D3F851FC963E2006F5A17 /* NewGarmentViewController.swift */; };
 		44D2329C1FBE8950002243B2 /* ContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D2329B1FBE8950002243B2 /* ContentCell.swift */; };
 		44E814651FC1A4EB00A5A6EE /* ClosetCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E814641FC1A4EB00A5A6EE /* ClosetCollectionReusableView.swift */; };
@@ -35,26 +33,19 @@
 			remoteGlobalIDString = 441B47271FBD7D7F00D421BB;
 			remoteInfo = MyCloset;
 		};
-		441F60551FD3FA4C00331F80 /* PBXContainerItemProxy */ = {
+		441F60651FD58EEE00331F80 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 441F60501FD3FA4C00331F80 /* GCCalendar.xcodeproj */;
+			containerPortal = 441F60601FD58EED00331F80 /* GCCalendar.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = E2EF54D51C5AA64800E93F85;
 			remoteInfo = GCCalendar;
 		};
-		441F60571FD3FA4C00331F80 /* PBXContainerItemProxy */ = {
+		441F60671FD58EEE00331F80 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 441F60501FD3FA4C00331F80 /* GCCalendar.xcodeproj */;
+			containerPortal = 441F60601FD58EED00331F80 /* GCCalendar.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = E29559AE1CA0CC5A00A5F429;
 			remoteInfo = GCCalendarTests;
-		};
-		441F605B1FD3FA7D00331F80 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 441F60501FD3FA4C00331F80 /* GCCalendar.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = E2EF54D41C5AA64800E93F85;
-			remoteInfo = GCCalendar;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -65,7 +56,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				441F605A1FD3FA7D00331F80 /* GCCalendar.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -89,7 +79,7 @@
 		441B474B1FBD7E4F00D421BB /* ClosetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetViewController.swift; sourceTree = "<group>"; };
 		441B474D1FBD7E6400D421BB /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		441B474F1FBD7E7D00D421BB /* MatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchViewController.swift; sourceTree = "<group>"; };
-		441F60501FD3FA4C00331F80 /* GCCalendar.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GCCalendar.xcodeproj; path = GCCalendar/GCCalendar.xcodeproj; sourceTree = "<group>"; };
+		441F60601FD58EED00331F80 /* GCCalendar.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = GCCalendar.xcodeproj; sourceTree = "<group>"; };
 		447D3F851FC963E2006F5A17 /* NewGarmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGarmentViewController.swift; sourceTree = "<group>"; };
 		44D2329B1FBE8950002243B2 /* ContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCell.swift; sourceTree = "<group>"; };
 		44E814641FC1A4EB00A5A6EE /* ClosetCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetCollectionReusableView.swift; sourceTree = "<group>"; };
@@ -101,7 +91,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				441F60591FD3FA7D00331F80 /* GCCalendar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,7 +107,7 @@
 		441B471F1FBD7D7F00D421BB = {
 			isa = PBXGroup;
 			children = (
-				441F60501FD3FA4C00331F80 /* GCCalendar.xcodeproj */,
+				441F60601FD58EED00331F80 /* GCCalendar.xcodeproj */,
 				441B472A1FBD7D7F00D421BB /* MyCloset */,
 				441B473F1FBD7D8000D421BB /* MyClosetTests */,
 				441B47291FBD7D7F00D421BB /* Products */,
@@ -159,21 +148,21 @@
 			path = MyClosetTests;
 			sourceTree = "<group>";
 		};
-		441F60511FD3FA4C00331F80 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				441F60561FD3FA4C00331F80 /* GCCalendar.framework */,
-				441F60581FD3FA4C00331F80 /* GCCalendarTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		441F605E1FD4107900331F80 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
 				441B474D1FBD7E6400D421BB /* CalendarViewController.swift */,
 			);
 			path = Calendar;
+			sourceTree = "<group>";
+		};
+		441F60611FD58EED00331F80 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				441F60661FD58EEE00331F80 /* GCCalendar.framework */,
+				441F60681FD58EEE00331F80 /* GCCalendarTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		44E814661FC1A4F600A5A6EE /* Closet */ = {
@@ -206,7 +195,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				441F605C1FD3FA7D00331F80 /* PBXTargetDependency */,
 			);
 			name = MyCloset;
 			productName = MyCloset;
@@ -265,8 +253,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 441F60511FD3FA4C00331F80 /* Products */;
-					ProjectRef = 441F60501FD3FA4C00331F80 /* GCCalendar.xcodeproj */;
+					ProductGroup = 441F60611FD58EED00331F80 /* Products */;
+					ProjectRef = 441F60601FD58EED00331F80 /* GCCalendar.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -278,18 +266,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		441F60561FD3FA4C00331F80 /* GCCalendar.framework */ = {
+		441F60661FD58EEE00331F80 /* GCCalendar.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = GCCalendar.framework;
-			remoteRef = 441F60551FD3FA4C00331F80 /* PBXContainerItemProxy */;
+			remoteRef = 441F60651FD58EEE00331F80 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		441F60581FD3FA4C00331F80 /* GCCalendarTests.xctest */ = {
+		441F60681FD58EEE00331F80 /* GCCalendarTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = GCCalendarTests.xctest;
-			remoteRef = 441F60571FD3FA4C00331F80 /* PBXContainerItemProxy */;
+			remoteRef = 441F60671FD58EEE00331F80 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -349,11 +337,6 @@
 			isa = PBXTargetDependency;
 			target = 441B47271FBD7D7F00D421BB /* MyCloset */;
 			targetProxy = 441B473D1FBD7D8000D421BB /* PBXContainerItemProxy */;
-		};
-		441F605C1FD3FA7D00331F80 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = GCCalendar;
-			targetProxy = 441F605B1FD3FA7D00331F80 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
