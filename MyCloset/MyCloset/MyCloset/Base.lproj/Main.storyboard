@@ -36,14 +36,80 @@
                     <view key="view" contentMode="scaleToFill" id="DEm-gu-CKN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XWQ-sE-7Uu">
+                                <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                                <items>
+                                    <navigationItem title="日历" id="w3K-nR-JIk"/>
+                                </items>
+                            </navigationBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3NP-T0-MKI">
+                                <rect key="frame" x="0.0" y="64" width="414" height="100"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="10L-As-KeB">
+                                        <rect key="frame" x="10" y="10" width="394" height="80"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="quK-JQ-Qab">
+                                                <rect key="frame" x="0.0" y="1.3333333333333286" width="157.66666666666666" height="77.333333333333329"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="城市" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RIs-xA-83A">
+                                                        <rect key="frame" x="50.333333333333343" y="0.0" width="57" height="33.666666666666664"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="天气" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q5N-sW-wJw">
+                                                        <rect key="frame" x="50.333333333333343" y="43.666666666666671" width="57" height="33.666666666666671"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="温度" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LXO-xQ-2wX">
+                                                <rect key="frame" x="157.66666666666663" y="11.333333333333332" width="236.33333333333337" height="57.333333333333343"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="48"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="quK-JQ-Qab" firstAttribute="width" secondItem="10L-As-KeB" secondAttribute="width" multiplier="0.4" id="9wS-nz-LfV"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="8uX-BE-PJn"/>
+                                    <constraint firstAttribute="bottom" secondItem="10L-As-KeB" secondAttribute="bottom" constant="10" id="AeB-Hg-sW5"/>
+                                    <constraint firstAttribute="trailing" secondItem="10L-As-KeB" secondAttribute="trailing" constant="10" id="DLq-LD-q7z"/>
+                                    <constraint firstItem="10L-As-KeB" firstAttribute="top" secondItem="3NP-T0-MKI" secondAttribute="top" constant="10" id="dVO-wZ-hNd"/>
+                                    <constraint firstItem="10L-As-KeB" firstAttribute="leading" secondItem="3NP-T0-MKI" secondAttribute="leading" constant="10" id="pPa-Zl-UgL"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="XWQ-sE-7Uu" firstAttribute="trailing" secondItem="fxq-HU-zne" secondAttribute="trailing" id="5H7-BB-1Ct"/>
+                            <constraint firstItem="3NP-T0-MKI" firstAttribute="trailing" secondItem="fxq-HU-zne" secondAttribute="trailing" id="6zS-1W-v9D"/>
+                            <constraint firstItem="XWQ-sE-7Uu" firstAttribute="width" secondItem="fxq-HU-zne" secondAttribute="width" id="R9k-c3-SsX"/>
+                            <constraint firstItem="XWQ-sE-7Uu" firstAttribute="top" secondItem="fxq-HU-zne" secondAttribute="top" id="chU-Tu-oeE"/>
+                            <constraint firstItem="XWQ-sE-7Uu" firstAttribute="leading" secondItem="fxq-HU-zne" secondAttribute="leading" id="dt9-1u-2cp"/>
+                            <constraint firstItem="3NP-T0-MKI" firstAttribute="top" secondItem="XWQ-sE-7Uu" secondAttribute="bottom" id="eXE-Ye-yAf"/>
+                            <constraint firstItem="3NP-T0-MKI" firstAttribute="leading" secondItem="fxq-HU-zne" secondAttribute="leading" id="pDW-pm-sjz"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="fxq-HU-zne"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="日历" image="calendar" landscapeImage="calendar" id="ODS-Rk-FKM"/>
+                    <connections>
+                        <outlet property="cityLabel" destination="RIs-xA-83A" id="4qj-hH-RhP"/>
+                        <outlet property="temperatureLabel" destination="LXO-xQ-2wX" id="fSh-z1-aO6"/>
+                        <outlet property="weatherLabel" destination="q5N-sW-wJw" id="J1h-KK-nzM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eLx-Rv-y0D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-199" y="70"/>
+            <point key="canvasLocation" x="-200.00000000000003" y="69.293478260869577"/>
         </scene>
         <!--衣橱-->
         <scene sceneID="tZ9-uF-8kL">
@@ -196,7 +262,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="m8D-3p-Fpf">
-                                                    <rect key="frame" x="10" y="10" width="160" height="124"/>
+                                                    <rect key="frame" x="10" y="10" width="160" height="160"/>
                                                     <gestureRecognizers/>
                                                 </imageView>
                                             </subviews>
