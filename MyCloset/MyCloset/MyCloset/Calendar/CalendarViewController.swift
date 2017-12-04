@@ -16,11 +16,19 @@ class CalendarViewController: UIViewController, GCCalendarViewDelegate
     @IBOutlet weak var cityLabel : UILabel!
     @IBOutlet weak var weatherLabel: UILabel!
     @IBOutlet weak var temperatureLabel: UILabel!
+    @IBOutlet weak var CalendarBackgroundView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.addWeatherInfo()
+        self.addCalendarView()
+        self.addConstraints()
+    }
 
-        let str = "http://www.weather.com.cn/data/cityinfo/101010100.html"
+    //MARK: Private Methods
+    private func addWeatherInfo()
+    {
+        let str = "http://www.weather.com.cn/data/cityinfo/101190101.html"
         let url = NSURL(string: str)
         let data = NSData(contentsOf: url! as URL)
         
@@ -30,23 +38,16 @@ class CalendarViewController: UIViewController, GCCalendarViewDelegate
             let weatherInfo = (json as AnyObject).object(forKey: "weatherinfo")
             
             let city = (weatherInfo as AnyObject).object(forKey:"city")
-            let maxTemp = (weatherInfo as AnyObject).object(forKey:"temp1")
-            let minTemp = (weatherInfo as AnyObject).object(forKey:"temp2")
+            let minTemp = (weatherInfo as AnyObject).object(forKey:"temp1")
+            let maxTemp = (weatherInfo as AnyObject).object(forKey:"temp2")
             let weather = (weatherInfo as AnyObject).object(forKey:"weather")
-            //result.text = " 城市:\(city!)\n 最高温度:\(maxTemp!)\n 最低温度:\(minTemp!)\n 天气:\(weather!)\n"
             cityLabel.text = "\(city!)"
-            weatherLabel.text = "\(minTemp!)度～\(maxTemp!)度"
-            temperatureLabel.text = "\(weather!)"
+            weatherLabel.text = "\(weather!)"
+            temperatureLabel.text =  "\(minTemp!)～\(maxTemp!)"
         }catch{
-            print("error")
+            print("Error with loading weather infomation")
         }
-        
-         self.addCalendarView()
-         self.addConstraints()
-        // Do any additional setup after loading the view.
     }
-
-    //MARK: Private Methods
     private func addCalendarView() {
         
         self.calendarView = GCCalendarView()
@@ -56,15 +57,18 @@ class CalendarViewController: UIViewController, GCCalendarViewDelegate
         
         self.calendarView.translatesAutoresizingMaskIntoConstraints = false
         
-        self.view.addSubview(self.calendarView)
+        //self.view.addSubview(self.calendarView)
+        self.CalendarBackgroundView.addSubview(self.calendarView)
     }
     private func addConstraints()
     {
         
-        self.calendarView.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor, constant: 200).isActive = true
-        self.calendarView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
-        self.calendarView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
-        self.calendarView.heightAnchor.constraint(equalToConstant: 325).isActive = true
+        //self.calendarView.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor, constant: 200).isActive = true
+        self.calendarView.topAnchor.constraint(equalTo: self.CalendarBackgroundView.topAnchor).isActive = true
+        self.calendarView.bottomAnchor.constraint(equalTo: self.CalendarBackgroundView.bottomAnchor).isActive = true
+        self.calendarView.leftAnchor.constraint(equalTo: self.CalendarBackgroundView.leftAnchor).isActive = true
+        self.calendarView.rightAnchor.constraint(equalTo: self.CalendarBackgroundView.rightAnchor).isActive = true
+        //self.calendarView.heightAnchor.constraint(equalToConstant: 325).isActive = true
     }
     //MARK: GCCalendarView delegate
     
