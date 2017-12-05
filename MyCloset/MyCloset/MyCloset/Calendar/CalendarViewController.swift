@@ -17,12 +17,12 @@ class CalendarViewController: UIViewController, GCCalendarViewDelegate
     @IBOutlet weak var weatherLabel: UILabel!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var CalendarBackgroundView: UIView!
-    
+    @IBOutlet weak var DateTitle: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addWeatherInfo()
         self.addCalendarView()
-        self.addConstraints()
+        self.addCalendarViewConstraints()
     }
 
     //MARK: Private Methods
@@ -60,20 +60,27 @@ class CalendarViewController: UIViewController, GCCalendarViewDelegate
         //self.view.addSubview(self.calendarView)
         self.CalendarBackgroundView.addSubview(self.calendarView)
     }
-    private func addConstraints()
+    private func addCalendarViewConstraints()
     {
-        
-        //self.calendarView.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor, constant: 200).isActive = true
         self.calendarView.topAnchor.constraint(equalTo: self.CalendarBackgroundView.topAnchor).isActive = true
         self.calendarView.bottomAnchor.constraint(equalTo: self.CalendarBackgroundView.bottomAnchor).isActive = true
         self.calendarView.leftAnchor.constraint(equalTo: self.CalendarBackgroundView.leftAnchor).isActive = true
         self.calendarView.rightAnchor.constraint(equalTo: self.CalendarBackgroundView.rightAnchor).isActive = true
-        //self.calendarView.heightAnchor.constraint(equalToConstant: 325).isActive = true
+    }
+    //MARK: Actions
+    @IBAction func onDatePikerPressed(_ sender: UIButton)
+    {
+        
     }
     //MARK: GCCalendarView delegate
     
-    func calendarView(_ calendarView: GCCalendarView, didSelectDate date: Date, inCalendar calendar: Calendar) {
-        
+    func calendarView(_ calendarView: GCCalendarView, didSelectDate date: Date, inCalendar calendar: Calendar)
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.calendar = calendar
+        dateFormatter.locale = Locale.current // 设置时区
+        dateFormatter.dateFormat = "YYYY年MM月dd日"
+        self.DateTitle.setTitle(dateFormatter.string(from: date), for: .normal)
     }
 
 }
