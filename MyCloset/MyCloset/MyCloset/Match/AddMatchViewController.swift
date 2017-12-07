@@ -11,7 +11,11 @@ import UIKit
 var curSelectedLargeClass_Match = 0
 var curSelectedSubclass_Match = 0
 var curSelectedImageIndex_Match = 0
+
 class AddMatchViewController: UIViewController {
+    
+    //Properties
+    var photos :[GarmentPhotoView] = []
     @IBOutlet weak var EditMatchView:UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,8 +46,10 @@ class AddMatchViewController: UIViewController {
     {
         if sender.source is ClothesCollectionViewController
         {
-            let photo = closet[curSelectedLargeClass_Match][curSelectedSubclass_Match][curSelectedImageIndex_Match].photo
-            EditMatchView.addSubview(UIImageView(image:photo))
+            let image = closet[curSelectedLargeClass_Match][curSelectedSubclass_Match][curSelectedImageIndex_Match].photo
+            let newImageView = GarmentPhotoView(frame: CGRect(x: 0, y: 0, width:180, height: 180),image:image)
+            photos.append(newImageView)
+            EditMatchView.addSubview(newImageView)
         }
     }
 }
