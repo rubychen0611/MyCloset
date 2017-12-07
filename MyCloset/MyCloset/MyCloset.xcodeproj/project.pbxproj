@@ -25,6 +25,7 @@
 		4458D5341FD820AE0003E0C2 /* MatchGarmentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4458D5331FD820AE0003E0C2 /* MatchGarmentCollectionViewCell.swift */; };
 		4458D5391FD8D3C80003E0C2 /* GCCalendar.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 441F60661FD58EEE00331F80 /* GCCalendar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4458D53B1FD8EC6A0003E0C2 /* GarmentPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4458D53A1FD8EC6A0003E0C2 /* GarmentPhotoView.swift */; };
+		4458D53D1FD92F150003E0C2 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4458D53C1FD92F150003E0C2 /* BackgroundView.swift */; };
 		447D3F861FC963E2006F5A17 /* NewGarmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447D3F851FC963E2006F5A17 /* NewGarmentViewController.swift */; };
 		44D2329C1FBE8950002243B2 /* ContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D2329B1FBE8950002243B2 /* ContentCell.swift */; };
 		44E814651FC1A4EB00A5A6EE /* ClosetCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E814641FC1A4EB00A5A6EE /* ClosetCollectionReusableView.swift */; };
@@ -101,6 +102,7 @@
 		4458D5311FD6E09C0003E0C2 /* ClothesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothesCollectionViewController.swift; sourceTree = "<group>"; };
 		4458D5331FD820AE0003E0C2 /* MatchGarmentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchGarmentCollectionViewCell.swift; sourceTree = "<group>"; };
 		4458D53A1FD8EC6A0003E0C2 /* GarmentPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarmentPhotoView.swift; sourceTree = "<group>"; };
+		4458D53C1FD92F150003E0C2 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		447D3F851FC963E2006F5A17 /* NewGarmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGarmentViewController.swift; sourceTree = "<group>"; };
 		44D2329B1FBE8950002243B2 /* ContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCell.swift; sourceTree = "<group>"; };
 		44E814641FC1A4EB00A5A6EE /* ClosetCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetCollectionReusableView.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				4458D52F1FD6E0540003E0C2 /* SubClassTableViewController.swift */,
 				4458D5311FD6E09C0003E0C2 /* ClothesCollectionViewController.swift */,
 				4458D5331FD820AE0003E0C2 /* MatchGarmentCollectionViewCell.swift */,
+				4458D53C1FD92F150003E0C2 /* BackgroundView.swift */,
 			);
 			path = Match;
 			sourceTree = "<group>";
@@ -342,6 +345,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4458D53D1FD92F150003E0C2 /* BackgroundView.swift in Sources */,
 				441B474E1FBD7E6400D421BB /* CalendarViewController.swift in Sources */,
 				4458D5341FD820AE0003E0C2 /* MatchGarmentCollectionViewCell.swift in Sources */,
 				4458D53B1FD8EC6A0003E0C2 /* GarmentPhotoView.swift in Sources */,

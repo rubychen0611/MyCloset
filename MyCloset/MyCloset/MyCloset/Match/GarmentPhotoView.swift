@@ -8,7 +8,8 @@
 
 import UIKit
 
-class GarmentPhotoView: UIImageView {
+class GarmentPhotoView: UIImageView
+{
 
     var lastLocation = CGPoint(x: 0, y: 0)
     var lastScaleFactor : CGFloat! = 1  //放大、缩小
@@ -42,18 +43,22 @@ class GarmentPhotoView: UIImageView {
     }
     */
     
+    override func touchesBegan(_ touches: (Set<UITouch>!), with event: UIEvent!)
+    {
+        self.superview?.bringSubview(toFront: self) //置于最上层
+        lastLocation = self.center  //保存位置
+        
+        //othersBorderDisappear()
+        (superview as! BackgroundView).oneBorderStay(self)
+    }
+    
     @objc func detectPan(_ recognizer:UIPanGestureRecognizer)
     {
         let translation  = recognizer.translation(in: self.superview)
         self.center = CGPoint(x: lastLocation.x + translation.x, y: lastLocation.y + translation.y)
     }
     
-    override func touchesBegan(_ touches: (Set<UITouch>!), with event: UIEvent!)
-    {
-        self.superview?.bringSubview(toFront: self) //置于最上层
-        lastLocation = self.center  //保存位置
-    }
-    
+ 
     @objc func detectPinch(_ sender: UIPinchGestureRecognizer)
     {
         let factor = sender.scale
@@ -78,6 +83,16 @@ class GarmentPhotoView: UIImageView {
                 lastScaleFactor = lastScaleFactor * factor
             }
         }
+    }
+    
+    public func borderDisappear()   //边框消失
+    {
+        self.layer.borderWidth = 0
+    }
+    public func drawBorder()
+    {
+        self.layer.borderWidth = 1
+        self.layer.borderColor = UIColor.lightGray.cgColor
     }
 
 }
