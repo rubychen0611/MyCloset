@@ -44,8 +44,12 @@ class CalendarViewController: UIViewController, GCCalendarViewDelegate
             cityLabel.text = "\(city!)"
             weatherLabel.text = "\(weather!)"
             temperatureLabel.text =  "\(minTemp!)～\(maxTemp!)"
-        }catch{
-            print("Error with loading weather infomation")
+        }catch
+        {
+            //print("Error with loading weather infomation")
+            cityLabel.text = "定位失败"
+            weatherLabel.text = "天气获取失败"
+            temperatureLabel.text =  "气温获取失败"
         }
     }
     private func addCalendarView() {

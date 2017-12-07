@@ -16,7 +16,6 @@ class ClothesViewController: UIViewController,UICollectionViewDataSource, UIColl
 {
     //MARK:Properties
     
-    var closet: [[[Garment]]] = []
    // var garment :Garment
     @IBOutlet weak var collectionView: UICollectionView!
     override func viewDidLoad()
@@ -24,45 +23,10 @@ class ClothesViewController: UIViewController,UICollectionViewDataSource, UIColl
         super.viewDidLoad()
         
         
-        /*for i in 0...largeclasses.count-1
-        {
-            closet.append(Array<Array<Garment>>())
-            for _ in 0...subclasses[i].count-1
-            {
-                closet[i].append(Array<Garment>())
-            }
-        }*/
-        //navigationItem.leftBarButtonItem = editButtonItem
-        
-        if let savedClothes = loadClothes()
-        {
-            closet = savedClothes
-        }
-        else
-        {
-            closet = Array<Array<Array<Garment>>>()
-            for i in 0...largeclasses.count-1
-            {
-                closet.append(Array<Array<Garment>>())
-                for _ in 0...subclasses[i].count-1
-                {
-                    closet[i].append(Array<Garment>())
-                }
-            }
-            loadSampleGarments()
-        }
-        
         self.title = subclasses[curSelectedLargeClass][curSelectedSubclass]
         
-        // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning()
-    {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
 
     //MARK:CollectionView代理方法
     func numberOfSections(in collectionView: UICollectionView) -> Int
@@ -70,7 +34,6 @@ class ClothesViewController: UIViewController,UICollectionViewDataSource, UIColl
         return 1 //Section个数
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(closet[curSelectedLargeClass][curSelectedSubclass].count)
         return closet[curSelectedLargeClass][curSelectedSubclass].count
     }
     
@@ -90,9 +53,6 @@ class ClothesViewController: UIViewController,UICollectionViewDataSource, UIColl
         } else {
             os_log("Failed to save clothes...", log: OSLog.default, type: .error)
         }
-    }
-    private func loadClothes() -> [[[Garment]]]?  {
-        return NSKeyedUnarchiver.unarchiveObject(withFile: Garment.ArchiveURL.path) as? [[[Garment]]]
     }
 
     //MARK: Actions
@@ -116,7 +76,7 @@ class ClothesViewController: UIViewController,UICollectionViewDataSource, UIColl
            // let newIndexPath = IndexPath(row: closet[garment.largeclass][garment.subclass].count, section: 0)
             
                 closet[garment.largeclass][garment.subclass].append(garment)
-               collectionView.reloadData()
+                collectionView.reloadData()
                // collectionView.insertItems(at: [newIndexPath])
                 
             }
@@ -125,27 +85,6 @@ class ClothesViewController: UIViewController,UICollectionViewDataSource, UIColl
         }
     }
     
-    private func loadSampleGarments() {
-        
-        let photo1 = UIImage(named: "shortsleeves_1")
-        let photo2 = UIImage(named: "shortsleeves_2")
-        let photo3 = UIImage(named: "T-shirt_1")
-        
-        guard let shortsleeves_1 = Garment(photo: photo1!, largeclass: 0, subclass : 0, season: Season.summer, brand: "me&co", price: "129", boughtdate : nil, extrainfo : "") else {
-            fatalError("Unable to instantiate shortsleeves1")
-        }
-        
-        guard let shortsleeves_2 = Garment(photo: photo2!, largeclass: 0, subclass : 0, season: Season.summer, brand: "peacebird", price: "199", boughtdate : nil, extrainfo : "") else {
-            fatalError("Unable to instantiate shortsleeves2")
-        }
-            guard let T_shirt_1 = Garment(photo: photo3!, largeclass: 0, subclass : 0, season: Season.springautumn, brand: "esprit", price: "250", boughtdate : nil, extrainfo : "") else {
-                fatalError("Unable to instantiate tshirt1")
-        }
-        
-        closet[0][0].append(shortsleeves_1)
-        closet[0][0].append(shortsleeves_2)
-        closet[0][1].append(T_shirt_1)
-    }
     
     //MARK:Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)

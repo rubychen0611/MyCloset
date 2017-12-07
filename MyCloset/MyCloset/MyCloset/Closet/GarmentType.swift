@@ -9,7 +9,7 @@
 import Foundation
 //class GarmentType
 //{
-    var closet = Array<Array<Array<Garment>>>()
+    var closet: [[[Garment]]] = []
     var curSelectedLargeClass = 0
     var curSelectedSubclass = 0
     public let largeclasses = ["上衣","下装","外套","连衣裙","鞋子","包","配饰"]

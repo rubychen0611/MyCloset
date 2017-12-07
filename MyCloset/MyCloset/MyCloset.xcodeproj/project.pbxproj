@@ -22,6 +22,8 @@
 		4458D52E1FD6E03F0003E0C2 /* LargeClassTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4458D52D1FD6E03F0003E0C2 /* LargeClassTableViewController.swift */; };
 		4458D5301FD6E0540003E0C2 /* SubClassTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4458D52F1FD6E0540003E0C2 /* SubClassTableViewController.swift */; };
 		4458D5321FD6E09C0003E0C2 /* ClothesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4458D5311FD6E09C0003E0C2 /* ClothesCollectionViewController.swift */; };
+		4458D5341FD820AE0003E0C2 /* MatchGarmentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4458D5331FD820AE0003E0C2 /* MatchGarmentCollectionViewCell.swift */; };
+		4458D5391FD8D3C80003E0C2 /* GCCalendar.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 441F60661FD58EEE00331F80 /* GCCalendar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		447D3F861FC963E2006F5A17 /* NewGarmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447D3F851FC963E2006F5A17 /* NewGarmentViewController.swift */; };
 		44D2329C1FBE8950002243B2 /* ContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D2329B1FBE8950002243B2 /* ContentCell.swift */; };
 		44E814651FC1A4EB00A5A6EE /* ClosetCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E814641FC1A4EB00A5A6EE /* ClosetCollectionReusableView.swift */; };
@@ -63,6 +65,16 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4458D5361FD8D3A10003E0C2 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				4458D5391FD8D3C80003E0C2 /* GCCalendar.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +98,7 @@
 		4458D52D1FD6E03F0003E0C2 /* LargeClassTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeClassTableViewController.swift; sourceTree = "<group>"; };
 		4458D52F1FD6E0540003E0C2 /* SubClassTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubClassTableViewController.swift; sourceTree = "<group>"; };
 		4458D5311FD6E09C0003E0C2 /* ClothesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothesCollectionViewController.swift; sourceTree = "<group>"; };
+		4458D5331FD820AE0003E0C2 /* MatchGarmentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchGarmentCollectionViewCell.swift; sourceTree = "<group>"; };
 		447D3F851FC963E2006F5A17 /* NewGarmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGarmentViewController.swift; sourceTree = "<group>"; };
 		44D2329B1FBE8950002243B2 /* ContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCell.swift; sourceTree = "<group>"; };
 		44E814641FC1A4EB00A5A6EE /* ClosetCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetCollectionReusableView.swift; sourceTree = "<group>"; };
@@ -178,6 +191,7 @@
 				4458D52D1FD6E03F0003E0C2 /* LargeClassTableViewController.swift */,
 				4458D52F1FD6E0540003E0C2 /* SubClassTableViewController.swift */,
 				4458D5311FD6E09C0003E0C2 /* ClothesCollectionViewController.swift */,
+				4458D5331FD820AE0003E0C2 /* MatchGarmentCollectionViewCell.swift */,
 			);
 			path = Match;
 			sourceTree = "<group>";
@@ -208,6 +222,7 @@
 				441B47251FBD7D7F00D421BB /* Frameworks */,
 				441B47261FBD7D7F00D421BB /* Resources */,
 				441F605D1FD3FA7D00331F80 /* Embed Frameworks */,
+				4458D5361FD8D3A10003E0C2 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -325,6 +340,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				441B474E1FBD7E6400D421BB /* CalendarViewController.swift in Sources */,
+				4458D5341FD820AE0003E0C2 /* MatchGarmentCollectionViewCell.swift in Sources */,
 				18A31C9C1FCBFFA80010CF15 /* GarmentCollectionViewCell.swift in Sources */,
 				18A31C9A1FCBF6810010CF15 /* Garment.swift in Sources */,
 				44E814651FC1A4EB00A5A6EE /* ClosetCollectionReusableView.swift in Sources */,

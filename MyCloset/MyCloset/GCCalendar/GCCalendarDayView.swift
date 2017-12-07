@@ -46,8 +46,9 @@ internal final class GCCalendarDayView: UIView {
                 let dateFormatter = DateFormatter()
                 
                 dateFormatter.calendar = self.configuration.calendar
-                dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "d", options: 0, locale: self.configuration.calendar.locale)
-                
+                //dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "d", options: 0, locale: self.configuration.calendar.locale)
+                dateFormatter.locale = Locale.current // 设置时区
+                dateFormatter.dateFormat = "d"
                 return dateFormatter.string(from: self.date!)
         }
     }

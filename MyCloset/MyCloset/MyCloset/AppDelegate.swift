@@ -16,6 +16,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        if let savedClothes = Garment.loadClothes()
+        {
+            closet = savedClothes
+        }
+        else
+        {
+            closet = Array<Array<Array<Garment>>>()
+            for i in 0...largeclasses.count-1
+            {
+                closet.append(Array<Array<Garment>>())
+                for _ in 0...subclasses[i].count-1
+                {
+                    closet[i].append(Array<Garment>())
+                }
+            }
+            Garment.loadSampleGarments()
+        }
         return true
     }
 

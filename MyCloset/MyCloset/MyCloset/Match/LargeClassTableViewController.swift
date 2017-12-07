@@ -8,8 +8,10 @@
 
 import UIKit
 
+
 class LargeClassTableViewController: UITableViewController {
 
+    let LargeClassTableIdentifier = "LargeClassTableIdentifier"
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,33 +22,41 @@ class LargeClassTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return largeclasses.count
     }
 
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        var cell = tableView.dequeueReusableCell(withIdentifier: LargeClassTableIdentifier)
+        if(cell == nil)
+        {
+            cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier:LargeClassTableIdentifier)
+        }
+        cell?.textLabel?.text = largeclasses[indexPath.row]
+        cell?.textLabel?.font = UIFont.systemFont(ofSize:20) //字体、大小
+        cell?.backgroundColor = UIColor.clear//背景色透明
+        cell?.textLabel?.textAlignment = NSTextAlignment.center //居中显示
+        cell?.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+        return cell!
     }
-    */
-
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) //点击tableview某行后的动作
+    {
+        curSelectedLargeClass_Match = indexPath.row
+    }
+    //MARK: Actions
+    @IBAction func cancel(_ sender: UIBarButtonItem)
+    {
+        dismiss(animated: true, completion: nil)
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

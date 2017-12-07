@@ -12,7 +12,7 @@ class ClosetViewController: UIViewController, UITableViewDataSource, UITableView
 {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var collectionView:UICollectionView!
-    var closet: [[[Garment]]] = []
+    
    
     
     private var selectIndex  = 0
@@ -27,23 +27,6 @@ class ClosetViewController: UIViewController, UITableViewDataSource, UITableView
     {
         super.viewDidLoad()
         
-
-        if let savedClothes = loadClothes()
-        {
-            closet = savedClothes
-        }
-        else
-        {
-            closet = Array<Array<Array<Garment>>>()
-            for i in 0...largeclasses.count-1
-            {
-                closet.append(Array<Array<Garment>>())
-                for _ in 0...subclasses[i].count-1
-                {
-                    closet[i].append(Array<Garment>())
-                }
-            }
-        }
         tableView.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .none)
         // Do any additional setup after loading the view.
     }
@@ -56,18 +39,9 @@ class ClosetViewController: UIViewController, UITableViewDataSource, UITableView
     
     override func viewWillAppear(_ animated: Bool)
     {
-        if let closetcopy = loadClothes()
-        {
-            closet = closetcopy
-            collectionView.reloadData()
-        }
+         collectionView.reloadData()
     }
     
-    //Mark: Private methods
-    private func loadClothes() -> [[[Garment]]]?
-    {
-        return NSKeyedUnarchiver.unarchiveObject(withFile: Garment.ArchiveURL.path) as? [[[Garment]]]
-    }
     //MARK: Table View 代理方法
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int //获得tableview行数
