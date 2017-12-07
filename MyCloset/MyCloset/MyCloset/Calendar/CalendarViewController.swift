@@ -8,16 +8,20 @@
 
 import UIKit
 import GCCalendar
+
+var matchImage = #imageLiteral(resourceName: "defaultPhoto") //暂用，之后换成返回时刷新图片！！
 class CalendarViewController: UIViewController, GCCalendarViewDelegate
 {
     
     //MARK: Properties
+   
     private var calendarView: GCCalendarView!   //第三方日历控件
     @IBOutlet weak var cityLabel : UILabel!
     @IBOutlet weak var weatherLabel: UILabel!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var CalendarBackgroundView: UIView!
     @IBOutlet weak var DateTitle: UIButton!
+    @IBOutlet weak var matchImageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addWeatherInfo()
@@ -86,5 +90,13 @@ class CalendarViewController: UIViewController, GCCalendarViewDelegate
         dateFormatter.dateFormat = "YYYY年MM月dd日"
         self.DateTitle.setTitle(dateFormatter.string(from: date), for: .normal)
     }
-
+    
+    //MARK:Navigation
+    @IBAction func unwindToCalendarView(sender: UIStoryboardSegue)
+    {
+        if sender.source is AddMatchViewController
+        {
+            matchImageView.image = matchImage
+        }
+    }
 }

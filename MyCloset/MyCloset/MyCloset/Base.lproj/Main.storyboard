@@ -199,6 +199,7 @@
                         <outlet property="CalendarBackgroundView" destination="g22-wI-HgY" id="7oZ-HO-brW"/>
                         <outlet property="DateTitle" destination="hh4-11-Yh5" id="P41-Dn-UUu"/>
                         <outlet property="cityLabel" destination="RIs-xA-83A" id="4qj-hH-RhP"/>
+                        <outlet property="matchImageView" destination="Kyc-r8-dMM" id="xZw-D3-G2k"/>
                         <outlet property="temperatureLabel" destination="LXO-xQ-2wX" id="fSh-z1-aO6"/>
                         <outlet property="weatherLabel" destination="q5N-sW-wJw" id="J1h-KK-nzM"/>
                     </connections>
@@ -227,7 +228,11 @@
                                                 <action selector="cancel:" destination="enV-Kz-Btn" id="4Lc-YU-e4s"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" image="save" id="2tb-tE-cBs"/>
+                                        <barButtonItem key="rightBarButtonItem" image="save" id="2tb-tE-cBs">
+                                            <connections>
+                                                <segue destination="u7Y-0f-12A" kind="unwind" unwindAction="unwindToCalendarViewWithSender:" id="dEG-dx-91m"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -300,6 +305,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RIJ-VP-d6g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="u7Y-0f-12A" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="608.69565217391312" y="68.478260869565219"/>
         </scene>

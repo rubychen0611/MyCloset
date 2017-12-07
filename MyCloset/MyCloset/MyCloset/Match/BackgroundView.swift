@@ -17,8 +17,8 @@ class BackgroundView: UIView
         allBorderDisappear()
     }
     
-    //public actions
-    public func allBorderDisappear()
+    //MARK: private actions
+    private func allBorderDisappear() //点击背景,所有边框隐藏
     {
         curSelectedPhotoView = nil
         for iv in photoViews
@@ -27,7 +27,8 @@ class BackgroundView: UIView
         }
     }
     
-    public func oneBorderStay(_ sender: GarmentPhotoView)
+    //MARK: public actions
+    public func oneBorderStay(_ sender: GarmentPhotoView)  //选中某张照片后，显示边框，其他照片的边框隐藏
     {
         curSelectedPhotoView = sender
         for iv in photoViews
@@ -42,12 +43,12 @@ class BackgroundView: UIView
             }
         }
     }
-    public func addNewPhotoView(_ newImageView: GarmentPhotoView)
+    public func addNewPhotoView(_ newImageView: GarmentPhotoView) //添加照片
     {
         photoViews.append(newImageView)
         addSubview(newImageView)
     }
-    public func deletePhotoView()
+    public func deletePhotoView()   //删除照片
     {
         if let iv = curSelectedPhotoView
         {
@@ -63,5 +64,15 @@ class BackgroundView: UIView
         }
         
     }
+    
+    public func generateScreenShot() -> UIImage
+    {
+        UIGraphicsBeginImageContextWithOptions(frame.size, false, UIScreen.main.scale)
+        layer.render(in: UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image!
+    }
+    
     
 }
