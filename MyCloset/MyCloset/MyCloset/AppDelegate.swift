@@ -34,6 +34,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             Garment.loadSampleGarments()
         }
+        
+        if let savedMatches = Match.loadDailyMatches()
+        {
+            dailyMatches = savedMatches
+        }
+        else
+        {
+            dailyMatches = [String: Match]()
+        }
         return true
     }
 

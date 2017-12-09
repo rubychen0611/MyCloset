@@ -302,6 +302,7 @@
                     </view>
                     <connections>
                         <outlet property="EditMatchView" destination="DRN-te-Iic" id="uWE-nn-NIW"/>
+                        <outlet property="SaveButton" destination="2tb-tE-cBs" id="dkE-Ck-0wU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RIJ-VP-d6g" userLabel="First Responder" sceneMemberID="firstResponder"/>

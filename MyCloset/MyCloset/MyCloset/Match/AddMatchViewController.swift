@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import os.log
 
 var curSelectedLargeClass_Match = 0
 var curSelectedSubclass_Match = 0
@@ -16,6 +17,7 @@ class AddMatchViewController: UIViewController {
     
     //MARK: Properties
     @IBOutlet weak var EditMatchView: BackgroundView!
+    @IBOutlet weak var SaveButton: UIBarButtonItem!
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -33,13 +35,18 @@ class AddMatchViewController: UIViewController {
 
     
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
 
+        guard let button = sender as? UIBarButtonItem, button === SaveButton else {
+            os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
+            return
+        }
         matchImage = EditMatchView.generateScreenShot()
-        
+        let clothes = EditMatchView.getClothes()
+        let newMatch = Match(clothes: clothes, screenShot: matchImage)
+        dailyMatches[CalendarViewController.selectedDate] = newMatch
     }
     
     

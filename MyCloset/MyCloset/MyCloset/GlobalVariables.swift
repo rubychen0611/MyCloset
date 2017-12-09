@@ -1,5 +1,5 @@
 //
-//  Classifications.swift
+//  GlobalVariables.swift
 //  MyCloset
 //
 //  Created by Apple on 2017/11/27.
@@ -7,9 +7,8 @@
 //
 
 import Foundation
-//class GarmentType
-//{
-    var closet: [[[Garment]]] = []
+
+    var closet: [[[Garment]]] = [] //存储衣服
     var curSelectedLargeClass = 0
     var curSelectedSubclass = 0
     public let largeclasses = ["上衣","下装","外套","连衣裙","鞋子","包","配饰"]
@@ -20,4 +19,6 @@ import Foundation
                              ["运动鞋", "板鞋", "休闲鞋", "靴子", "凉鞋", "皮鞋", "其他鞋子"],
                              ["双肩包", "单肩包", "钱包", "旅行箱", "肩挎包", "其他包"],
                              ["帽子", "围巾", "腰带", "手套", "袜子", "头饰", "其他配饰"]]
-//}
+
+    var dailyMatches: [String : Match] = [:]//每日搭配存储
+

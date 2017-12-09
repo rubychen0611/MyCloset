@@ -8,8 +8,10 @@
 
 import UIKit
 import GCCalendar
+import os.log
 
 var matchImage = #imageLiteral(resourceName: "defaultPhoto") //暂用，之后换成返回时刷新图片！！
+
 class CalendarViewController: UIViewController, GCCalendarViewDelegate
 {
     
@@ -22,6 +24,8 @@ class CalendarViewController: UIViewController, GCCalendarViewDelegate
     @IBOutlet weak var CalendarBackgroundView: UIView!
     @IBOutlet weak var DateTitle: UIButton!
     @IBOutlet weak var matchImageView: UIImageView!
+    public static var selectedDate: String = "" //界面传值暂用！
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addWeatherInfo()
@@ -68,6 +72,7 @@ class CalendarViewController: UIViewController, GCCalendarViewDelegate
         //self.view.addSubview(self.calendarView)
         self.CalendarBackgroundView.addSubview(self.calendarView)
     }
+    
     private func addCalendarViewConstraints()
     {
         self.calendarView.topAnchor.constraint(equalTo: self.CalendarBackgroundView.topAnchor).isActive = true
@@ -75,6 +80,20 @@ class CalendarViewController: UIViewController, GCCalendarViewDelegate
         self.calendarView.leftAnchor.constraint(equalTo: self.CalendarBackgroundView.leftAnchor).isActive = true
         self.calendarView.rightAnchor.constraint(equalTo: self.CalendarBackgroundView.rightAnchor).isActive = true
     }
+    
+    private func saveDailyMatches() //保存每日搭配
+    {
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(dailyMatches, toFile: Match.ArchiveURL.path)
+        if isSuccessfulSave
+        {
+            os_log("Matches successfully saved.", log: OSLog.default, type: .debug)
+        } else
+        {
+            os_log("Failed to save Matches...", log: OSLog.default, type: .error)
+        }
+    }
+    
+    
     //MARK: Actions
     @IBAction func onDatePikerPressed(_ sender: UIButton)
     {
@@ -89,6 +108,17 @@ class CalendarViewController: UIViewController, GCCalendarViewDelegate
         dateFormatter.locale = Locale.current // 设置时区
         dateFormatter.dateFormat = "YYYY年MM月dd日"
         self.DateTitle.setTitle(dateFormatter.string(from: date), for: .normal)
+        dateFormatter.dateFormat = "YYYYMMdd"
+        CalendarViewController.selectedDate = dateFormatter.string(from: date)
+        
+        if let match = dailyMatches[CalendarViewController.selectedDate]
+        {
+            matchImageView.image = match.getScreenShot()
+        }
+        else
+        {
+            matchImageView.image = #imageLiteral(resourceName: "defaultPhoto")
+        }
     }
     
     //MARK:Navigation
@@ -96,7 +126,12 @@ class CalendarViewController: UIViewController, GCCalendarViewDelegate
     {
         if sender.source is AddMatchViewController
         {
-            matchImageView.image = matchImage
+            //matchImageView.image = matchImage //改
+            saveDailyMatches()
+            if let match = dailyMatches[CalendarViewController.selectedDate]
+            {
+                matchImageView.image = match.getScreenShot()
+            }
         }
     }
 }

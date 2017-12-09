@@ -94,5 +94,16 @@ class GarmentPhotoView: UIImageView
         self.layer.borderWidth = 1
         self.layer.borderColor = UIColor.lightGray.cgColor
     }
-
+    public func getImage() -> UIImage
+    {
+        return image!
+    }
+    public func getLocation() -> CGPoint
+    {
+        return lastLocation
+    }
+    public func getScaleFactor() -> CGFloat
+    {
+        return lastScaleFactor
+    }
 }

@@ -74,5 +74,17 @@ class BackgroundView: UIView
         return image!
     }
     
-    
+    public func getClothes() -> [SingleGarment]
+    {
+        var clothes : [SingleGarment] = []
+        for pv in photoViews
+        {
+            let image = pv.getImage()
+            let location = pv.getLocation()
+            let scaleFactor = pv.getScaleFactor()
+            let garment = SingleGarment(image: image, location: location, scaleFactor: scaleFactor)
+            clothes.append(garment)
+        }
+        return clothes
+    }
 }

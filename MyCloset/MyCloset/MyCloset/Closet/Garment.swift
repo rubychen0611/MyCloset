@@ -29,6 +29,7 @@ class Garment :NSObject, NSCoding //单件衣服
     var price: String //Int? //价格
     var boughtdate: Date? //买入日期
     var extrainfo: String //备注信息
+    
     //MARK: Archiving Paths
     
     static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
