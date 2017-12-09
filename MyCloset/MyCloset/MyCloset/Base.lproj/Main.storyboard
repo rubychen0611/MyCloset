@@ -14,20 +14,64 @@
     </dependencies>
     <scenes>
         <!--搭配-->
-        <scene sceneID="YGg-Yr-Jrt">
+        <scene sceneID="Okn-6K-KPG">
             <objects>
-                <viewController id="dG3-uA-VtS" customClass="MatchViewController" customModule="MyCloset" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Lbt-gh-h5n">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nis-y7-cML" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <collectionViewController id="4KK-PU-uT5" customClass="MatchCollectionViewController" customModule="MyCloset" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="aRJ-mt-vlZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <viewLayoutGuide key="safeArea" id="yVv-IW-wc7"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="搭配" image="match" landscapeImage="match" id="6QD-bl-vDo"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RNl-En-ihd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cCh-a5-LnL">
+                            <size key="itemSize" width="180" height="220"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MatchCollectionViewCell" id="fNO-WU-nem" customClass="MatchCollectionViewCell" customModule="MyCloset" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="180" height="220"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="180" height="220"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UQM-Kv-jsk">
+                                            <rect key="frame" x="8" y="8" width="164" height="184"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3SE-nx-4jH">
+                                            <rect key="frame" x="0.0" y="192" width="180" height="28"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="3SE-nx-4jH" secondAttribute="trailing" id="8nt-uD-nxB"/>
+                                    <constraint firstAttribute="bottom" secondItem="3SE-nx-4jH" secondAttribute="bottom" id="Ji9-AE-Pug"/>
+                                    <constraint firstItem="UQM-Kv-jsk" firstAttribute="top" secondItem="fNO-WU-nem" secondAttribute="topMargin" id="M1w-1P-O2Y"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="UQM-Kv-jsk" secondAttribute="bottom" constant="20" id="eVX-WJ-8fr"/>
+                                    <constraint firstItem="UQM-Kv-jsk" firstAttribute="leading" secondItem="fNO-WU-nem" secondAttribute="leadingMargin" id="epD-PZ-n2c"/>
+                                    <constraint firstItem="3SE-nx-4jH" firstAttribute="top" secondItem="UQM-Kv-jsk" secondAttribute="bottom" id="hra-nt-SNP"/>
+                                    <constraint firstItem="3SE-nx-4jH" firstAttribute="leading" secondItem="fNO-WU-nem" secondAttribute="leading" id="q7f-sV-RrR"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="UQM-Kv-jsk" secondAttribute="trailing" id="scx-MJ-rYU"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="matchImageView" destination="UQM-Kv-jsk" id="aR6-Zw-22Z"/>
+                                    <outlet property="nameLabel" destination="3SE-nx-4jH" id="Qlb-dQ-2Wz"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="4KK-PU-uT5" id="uaa-64-SE9"/>
+                            <outlet property="delegate" destination="4KK-PU-uT5" id="HYJ-bZ-4BK"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="搭配" id="Kwo-i4-Wfd"/>
+                </collectionViewController>
             </objects>
-            <point key="canvasLocation" x="-932" y="603"/>
+            <point key="canvasLocation" x="-642.02898550724638" y="610.59782608695662"/>
         </scene>
         <!--日历-->
         <scene sceneID="nx5-sv-gsu">
@@ -146,6 +190,9 @@
                                                     <constraint firstAttribute="width" constant="30" id="SU4-QO-Rxs"/>
                                                 </constraints>
                                                 <state key="normal" image="collect"/>
+                                                <connections>
+                                                    <action selector="onCollectButtonPressed:" destination="xFk-py-zPo" eventType="touchUpInside" id="o90-bW-xiH"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mzb-9G-A1d">
                                                 <rect key="frame" x="0.0" y="72" width="30" height="30"/>
@@ -199,6 +246,7 @@
                         <outlet property="CalendarBackgroundView" destination="g22-wI-HgY" id="7oZ-HO-brW"/>
                         <outlet property="DateTitle" destination="hh4-11-Yh5" id="P41-Dn-UUu"/>
                         <outlet property="cityLabel" destination="RIs-xA-83A" id="4qj-hH-RhP"/>
+                        <outlet property="collectButton" destination="ypc-G1-Bxv" id="nTZ-cQ-zbU"/>
                         <outlet property="matchImageView" destination="Kyc-r8-dMM" id="xZw-D3-G2k"/>
                         <outlet property="temperatureLabel" destination="LXO-xQ-2wX" id="fSh-z1-aO6"/>
                         <outlet property="weatherLabel" destination="q5N-sW-wJw" id="J1h-KK-nzM"/>
@@ -206,7 +254,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eLx-Rv-y0D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-200.00000000000003" y="69.293478260869577"/>
+            <point key="canvasLocation" x="107.24637681159422" y="69.293478260869577"/>
         </scene>
         <!--Add Match View Controller-->
         <scene sceneID="0xK-20-ee6">
@@ -308,7 +356,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RIJ-VP-d6g" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="u7Y-0f-12A" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="608.69565217391312" y="68.478260869565219"/>
+            <point key="canvasLocation" x="915.94202898550736" y="68.478260869565219"/>
         </scene>
         <!--选择衣物分类-->
         <scene sceneID="Zbk-Un-5JJ">
@@ -348,7 +396,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nud-RT-JE3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2293" y="64"/>
+            <point key="canvasLocation" x="2600" y="63.586956521739133"/>
         </scene>
         <!--选择衣物子类-->
         <scene sceneID="4pX-0b-iwA">
@@ -380,7 +428,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rgK-ny-WvQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3214" y="64"/>
+            <point key="canvasLocation" x="3520.289855072464" y="63.586956521739133"/>
         </scene>
         <!--选择衣物-->
         <scene sceneID="c9N-ef-BcB">
@@ -431,7 +479,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wum-dz-bCO" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="HYJ-3l-bSD" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4053.6231884057975" y="63.586956521739133"/>
+            <point key="canvasLocation" x="4360.8695652173919" y="63.586956521739133"/>
         </scene>
         <!--衣橱-->
         <scene sceneID="tZ9-uF-8kL">
@@ -836,7 +884,7 @@
                     <connections>
                         <segue destination="WR3-ko-4Lh" kind="relationship" relationship="viewControllers" id="RpU-VO-Zc5"/>
                         <segue destination="xFk-py-zPo" kind="relationship" relationship="viewControllers" id="eeS-39-1vE"/>
-                        <segue destination="dG3-uA-VtS" kind="relationship" relationship="viewControllers" id="NlM-a3-SqT"/>
+                        <segue destination="jfc-LG-RFP" kind="relationship" relationship="viewControllers" id="VTU-ou-1jV"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xDW-ha-Y1x" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -877,7 +925,26 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hcq-YV-DrB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1408.6956521739132" y="64.402173913043484"/>
+            <point key="canvasLocation" x="1715.9420289855075" y="64.402173913043484"/>
+        </scene>
+        <!--搭配-->
+        <scene sceneID="TQ6-oy-f9M">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jfc-LG-RFP" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="搭配" image="match" id="Xh8-ke-qrC"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ZQU-sR-ppq">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="4KK-PU-uT5" kind="relationship" relationship="rootViewController" id="Qhz-Zu-6tS"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hd3-7I-XE1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1410.144927536232" y="610.59782608695662"/>
         </scene>
     </scenes>
     <resources>

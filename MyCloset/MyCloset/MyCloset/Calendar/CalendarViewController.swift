@@ -24,6 +24,7 @@ class CalendarViewController: UIViewController, GCCalendarViewDelegate
     @IBOutlet weak var CalendarBackgroundView: UIView!
     @IBOutlet weak var DateTitle: UIButton!
     @IBOutlet weak var matchImageView: UIImageView!
+    @IBOutlet weak var collectButton: UIButton!
     public static var selectedDate: String = "" //界面传值暂用！
     
     override func viewDidLoad() {
@@ -83,21 +84,47 @@ class CalendarViewController: UIViewController, GCCalendarViewDelegate
     
     private func saveDailyMatches() //保存每日搭配
     {
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(dailyMatches, toFile: Match.ArchiveURL.path)
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(dailyMatches, toFile: Match.DailyMatchesArchiveURL.path)
         if isSuccessfulSave
         {
-            os_log("Matches successfully saved.", log: OSLog.default, type: .debug)
+            os_log("Daily Matches successfully saved.", log: OSLog.default, type: .debug)
         } else
         {
-            os_log("Failed to save Matches...", log: OSLog.default, type: .error)
+            os_log("Failed to save Daily Matches...", log: OSLog.default, type: .error)
         }
     }
     
-    
+    private func saveFavouriteMatches()
+    {
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(favouriteMatches, toFile: Match.FavouriteMatchesArchiveURL.path)
+        if isSuccessfulSave
+        {
+            os_log("Favourite Matches successfully saved.", log: OSLog.default, type: .debug)
+        } else
+        {
+            os_log("Failed to save Favourite Matches...", log: OSLog.default, type: .error)
+        }
+    }
     //MARK: Actions
     @IBAction func onDatePikerPressed(_ sender: UIButton)
     {
         
+    }
+    
+    @IBAction func onCollectButtonPressed(_ sender: UIButton)
+    {
+        if favouriteMatches[CalendarViewController.selectedDate] == nil
+        {
+            favouriteMatches[CalendarViewController.selectedDate] = dailyMatches[CalendarViewController.selectedDate]
+            collectButton.setImage(#imageLiteral(resourceName: "cellect_like"), for:.normal)  //设置图标
+        }
+        else
+        {
+            favouriteMatches.removeValue(forKey: CalendarViewController.selectedDate)
+            collectButton.setImage(#imageLiteral(resourceName: "collect"), for:.normal)
+            //从收藏中删除
+        }
+        saveFavouriteMatches()
     }
     //MARK: GCCalendarView delegate
     
@@ -119,6 +146,16 @@ class CalendarViewController: UIViewController, GCCalendarViewDelegate
         {
             matchImageView.image = #imageLiteral(resourceName: "defaultPhoto")
         }
+        
+        if favouriteMatches[CalendarViewController.selectedDate] == nil
+        {
+             collectButton.setImage(#imageLiteral(resourceName: "collect"), for:.normal)
+        }
+        else
+        {
+             collectButton.setImage(#imageLiteral(resourceName: "cellect_like"), for:.normal)
+        }
+        
     }
     
     //MARK:Navigation

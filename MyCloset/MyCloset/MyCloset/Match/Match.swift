@@ -57,7 +57,8 @@ class Match: NSObject, NSCoding
     
     //MARK: Archiving Paths
     static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
-    static let ArchiveURL = DocumentsDirectory.appendingPathComponent("DailyMatches")
+    static let DailyMatchesArchiveURL = DocumentsDirectory.appendingPathComponent("DailyMatches")
+    static let FavouriteMatchesArchiveURL = DocumentsDirectory.appendingPathComponent("FavourateMatches")
     
     //MARK:Types
     struct PropertyKey
@@ -89,7 +90,12 @@ class Match: NSObject, NSCoding
     
     public static func loadDailyMatches() -> [String: Match]?
     {
-         return NSKeyedUnarchiver.unarchiveObject(withFile: Match.ArchiveURL.path) as? [String: Match]
+         return NSKeyedUnarchiver.unarchiveObject(withFile: Match.DailyMatchesArchiveURL.path) as? [String: Match]
+    }
+    
+    public static func loadFavouriteMatches() -> [String: Match]?
+    {
+        return NSKeyedUnarchiver.unarchiveObject(withFile: Match.FavouriteMatchesArchiveURL.path) as? [String: Match]
     }
     
     //MARK: public methods

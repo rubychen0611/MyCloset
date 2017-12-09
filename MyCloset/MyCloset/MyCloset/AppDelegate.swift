@@ -43,6 +43,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         {
             dailyMatches = [String: Match]()
         }
+        
+        if let savedFavouriteMatches = Match.loadFavouriteMatches()
+        {
+            favouriteMatches = savedFavouriteMatches
+        }
+        else
+        {
+            favouriteMatches = [String: Match]()
+        }
         return true
     }
 

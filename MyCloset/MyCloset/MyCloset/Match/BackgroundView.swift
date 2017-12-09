@@ -17,8 +17,8 @@ class BackgroundView: UIView
         allBorderDisappear()
     }
     
-    //MARK: private actions
-    private func allBorderDisappear() //点击背景,所有边框隐藏
+    //MARK: public actions
+    public func allBorderDisappear() //点击背景,所有边框隐藏
     {
         curSelectedPhotoView = nil
         for iv in photoViews
@@ -27,7 +27,6 @@ class BackgroundView: UIView
         }
     }
     
-    //MARK: public actions
     public func oneBorderStay(_ sender: GarmentPhotoView)  //选中某张照片后，显示边框，其他照片的边框隐藏
     {
         curSelectedPhotoView = sender

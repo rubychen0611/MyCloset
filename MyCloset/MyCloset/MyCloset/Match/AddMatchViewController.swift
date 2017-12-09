@@ -43,6 +43,7 @@ class AddMatchViewController: UIViewController {
             os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
             return
         }
+        EditMatchView.allBorderDisappear()
         matchImage = EditMatchView.generateScreenShot()
         let clothes = EditMatchView.getClothes()
         let newMatch = Match(clothes: clothes, screenShot: matchImage)

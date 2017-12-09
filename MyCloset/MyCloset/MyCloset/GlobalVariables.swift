@@ -21,4 +21,5 @@ import Foundation
                              ["帽子", "围巾", "腰带", "手套", "袜子", "头饰", "其他配饰"]]
 
     var dailyMatches: [String : Match] = [:]//每日搭配存储
+    var favouriteMatches:[String: Match] = [:] //收藏搭配
 
