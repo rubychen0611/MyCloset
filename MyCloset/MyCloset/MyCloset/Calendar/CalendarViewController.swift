@@ -9,10 +9,11 @@
 import UIKit
 import GCCalendar
 import os.log
+import CoreLocation
+import MapKit
 
-var matchImage = #imageLiteral(resourceName: "defaultPhoto") //暂用，之后换成返回时刷新图片！！
 
-class CalendarViewController: UIViewController, GCCalendarViewDelegate
+class CalendarViewController: UIViewController, GCCalendarViewDelegate, CLLocationManagerDelegate
 {
     
     //MARK: Properties
@@ -27,19 +28,66 @@ class CalendarViewController: UIViewController, GCCalendarViewDelegate
     @IBOutlet weak var collectButton: UIButton!
     @IBOutlet weak var weatherImage: UIImageView!
     public static var selectedDate: String = "" //界面传值暂用！
+    var queue = OperationQueue()
+    var city: String?
+    var weather: String?
+    var code: String?
+    var temperature: String?
+    
+    let locationManager = CLLocationManager()
+    var latitude: Double? = 0
+    var longitude: Double? = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.addWeatherInfo()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        locationManager.requestWhenInUseAuthorization()
+        self.addThread()
+        //self.addWeatherInfo()
         self.addCalendarView()
         self.addCalendarViewConstraints()
     }
 
     //MARK: Private Methods
-    private func addWeatherInfo()
+    private func addThread()
     {
-        //let str = "http://www.weather.com.cn/data/cityinfo/101190101.html"
-        let str = "https://api.seniverse.com/v3/weather/now.json?key=b80incxtoazyui2b&location=beijing&language=zh-Hans&unit=c"
+        queue = OperationQueue()
+        let loadWeatherOperation = BlockOperation(block:
+        {
+            self.loadLocation()
+            self.loadWeatherInfo()
+            OperationQueue.main.addOperation({self.updateWeather()})
+        })
+        loadWeatherOperation.completionBlock =
+        {
+            print("loadWeatherOperation completed, cancelled:\(loadWeatherOperation.isCancelled)")
+        }
+        queue.addOperation(loadWeatherOperation)
+    }
+    private func loadLocation()
+    {
+        if (CLLocationManager.locationServicesEnabled())
+        {
+            //允许使用定位服务的话，开启定位服务更新
+            locationManager.startUpdatingLocation() //更新位置
+            print("定位开始")
+        }
+        
+    }
+    private func updateWeather()
+    {
+        self.cityLabel.text = "\(self.city!)"
+        self.weatherLabel.text = "\(self.weather!)"
+        self.temperatureLabel.text = "\(self.temperature!)℃"
+        self.weatherImage.image = UIImage(named:self.code!)
+    }
+    private func loadWeatherInfo()
+    {
+
+        let longitude_2 = String(format: "%.2f", longitude!)
+        let latitude_2 = String(format: "%.2f", latitude!)
+        let str = "https://api.seniverse.com/v3/weather/now.json?key=b80incxtoazyui2b&location=\(latitude_2):\(longitude_2)&language=zh-Hans&unit=c"
         let url = NSURL(string: str)
         let data = NSData(contentsOf: url! as URL)
         
@@ -49,16 +97,12 @@ class CalendarViewController: UIViewController, GCCalendarViewDelegate
             let results = (json as AnyObject).object(forKey: "results") as? NSArray
             
             let location = (results![0] as AnyObject).object(forKey: "location")
-            let city = (location as AnyObject).object(forKey:"name")
+            city = (location as AnyObject).object(forKey:"name") as? String
             
             let now = (results![0] as AnyObject).object(forKey:"now")
-            let weather = (now as AnyObject).object(forKey:"text")
-            let temperature = (now as AnyObject).object(forKey:"temperature")
-            let code = (now as AnyObject).object(forKey: "code")
-            cityLabel.text = "\(city!)"
-            weatherLabel.text = "\(weather!)"
-            temperatureLabel.text = "\(temperature!)℃"
-            weatherImage.image = UIImage(named:code! as! String)
+            weather = (now as AnyObject).object(forKey:"text") as? String
+            temperature = (now as AnyObject).object(forKey:"temperature") as? String
+            code = (now as AnyObject).object(forKey: "code") as? String
         }catch
         {
             //print("Error with loading weather infomation")
@@ -176,5 +220,14 @@ class CalendarViewController: UIViewController, GCCalendarViewDelegate
                 matchImageView.image = match.getScreenShot()
             }
         }
+    }
+    
+    //MARK: location manager delegate
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        let currLocation:CLLocation = locations.last!
+        longitude = currLocation.coordinate.longitude
+        latitude = currLocation.coordinate.latitude
+     
     }
 }

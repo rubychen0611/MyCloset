@@ -48,5 +48,7 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>我们希望获得您当前所在的城市以便获得当前天气状况。</string>
 </dict>
 </plist>

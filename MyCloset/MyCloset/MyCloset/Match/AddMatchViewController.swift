@@ -44,7 +44,7 @@ class AddMatchViewController: UIViewController {
             return
         }
         EditMatchView.allBorderDisappear()
-        matchImage = EditMatchView.generateScreenShot()
+        let matchImage = EditMatchView.generateScreenShot()
         let clothes = EditMatchView.getClothes()
         let newMatch = Match(clothes: clothes, screenShot: matchImage)
         dailyMatches[CalendarViewController.selectedDate] = newMatch
