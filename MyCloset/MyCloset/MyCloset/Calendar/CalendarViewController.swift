@@ -37,22 +37,30 @@ class CalendarViewController: UIViewController, GCCalendarViewDelegate
     //MARK: Private Methods
     private func addWeatherInfo()
     {
-        let str = "http://www.weather.com.cn/data/cityinfo/101190101.html"
+        //let str = "http://www.weather.com.cn/data/cityinfo/101190101.html"
+        let str = "https://api.seniverse.com/v3/weather/now.json?key=b80incxtoazyui2b&location=beijing&language=zh-Hans&unit=c"
         let url = NSURL(string: str)
         let data = NSData(contentsOf: url! as URL)
         
         do{
             let json =
                 try  JSONSerialization.jsonObject(with: data! as Data, options: JSONSerialization.ReadingOptions.allowFragments)
-            let weatherInfo = (json as AnyObject).object(forKey: "weatherinfo")
+            let weatherInfo = (json as AnyObject).object(forKey: "results")
             
-            let city = (weatherInfo as AnyObject).object(forKey:"city")
-            let minTemp = (weatherInfo as AnyObject).object(forKey:"temp1")
-            let maxTemp = (weatherInfo as AnyObject).object(forKey:"temp2")
-            let weather = (weatherInfo as AnyObject).object(forKey:"weather")
+            //let city = (weatherInfo as AnyObject).object(forKey:"city")
+            //let minTemp = (weatherInfo as AnyObject).object(forKey:"temp1")
+            //let maxTemp = (weatherInfo as AnyObject).object(forKey:"temp2")
+            //let weather = (weatherInfo as AnyObject).object(forKey:"weather")
+            let location = (weatherInfo as AnyObject).object(forKey: "location")
+            let city = (location as AnyObject).object(forKey:"name")
+            
+            let now = (weatherInfo as AnyObject).object(forKey:"now")
+            let weather = (now as AnyObject).object(forKey:"text")
+            let temperature = (now as AnyObject).object(forKey:"temperature")
             cityLabel.text = "\(city!)"
             weatherLabel.text = "\(weather!)"
-            temperatureLabel.text =  "\(minTemp!)～\(maxTemp!)"
+            //temperatureLabel.text =  "\(minTemp!)～\(maxTemp!)"
+            temperatureLabel.text = "\(temperature)度"
         }catch
         {
             //print("Error with loading weather infomation")
