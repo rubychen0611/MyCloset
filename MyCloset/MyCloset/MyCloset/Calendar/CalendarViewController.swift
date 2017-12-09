@@ -25,6 +25,7 @@ class CalendarViewController: UIViewController, GCCalendarViewDelegate
     @IBOutlet weak var DateTitle: UIButton!
     @IBOutlet weak var matchImageView: UIImageView!
     @IBOutlet weak var collectButton: UIButton!
+    @IBOutlet weak var weatherImage: UIImageView!
     public static var selectedDate: String = "" //界面传值暂用！
     
     override func viewDidLoad() {
@@ -45,22 +46,19 @@ class CalendarViewController: UIViewController, GCCalendarViewDelegate
         do{
             let json =
                 try  JSONSerialization.jsonObject(with: data! as Data, options: JSONSerialization.ReadingOptions.allowFragments)
-            let weatherInfo = (json as AnyObject).object(forKey: "results")
+            let results = (json as AnyObject).object(forKey: "results") as? NSArray
             
-            //let city = (weatherInfo as AnyObject).object(forKey:"city")
-            //let minTemp = (weatherInfo as AnyObject).object(forKey:"temp1")
-            //let maxTemp = (weatherInfo as AnyObject).object(forKey:"temp2")
-            //let weather = (weatherInfo as AnyObject).object(forKey:"weather")
-            let location = (weatherInfo as AnyObject).object(forKey: "location")
+            let location = (results![0] as AnyObject).object(forKey: "location")
             let city = (location as AnyObject).object(forKey:"name")
             
-            let now = (weatherInfo as AnyObject).object(forKey:"now")
+            let now = (results![0] as AnyObject).object(forKey:"now")
             let weather = (now as AnyObject).object(forKey:"text")
             let temperature = (now as AnyObject).object(forKey:"temperature")
+            let code = (now as AnyObject).object(forKey: "code")
             cityLabel.text = "\(city!)"
             weatherLabel.text = "\(weather!)"
-            //temperatureLabel.text =  "\(minTemp!)～\(maxTemp!)"
-            temperatureLabel.text = "\(temperature)度"
+            temperatureLabel.text = "\(temperature!)℃"
+            weatherImage.image = UIImage(named:code! as! String)
         }catch
         {
             //print("Error with loading weather infomation")
