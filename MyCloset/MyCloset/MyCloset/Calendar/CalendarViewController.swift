@@ -43,8 +43,8 @@ class CalendarViewController: UIViewController, GCCalendarViewDelegate, CLLocati
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         locationManager.requestWhenInUseAuthorization()
+       // locationManager.requestAlwaysAuthorization()
         self.addThread()
-        //self.addWeatherInfo()
         self.addCalendarView()
         self.addCalendarViewConstraints()
     }
@@ -56,7 +56,7 @@ class CalendarViewController: UIViewController, GCCalendarViewDelegate, CLLocati
         let loadWeatherOperation = BlockOperation(block:
         {
             self.loadLocation()
-            self.loadWeatherInfo()
+         //   self.loadWeatherInfo()
             OperationQueue.main.addOperation({self.updateWeather()})
         })
         loadWeatherOperation.completionBlock =
@@ -87,7 +87,8 @@ class CalendarViewController: UIViewController, GCCalendarViewDelegate, CLLocati
 
         let longitude_2 = String(format: "%.2f", longitude!)
         let latitude_2 = String(format: "%.2f", latitude!)
-        let str = "https://api.seniverse.com/v3/weather/now.json?key=b80incxtoazyui2b&location=\(latitude_2):\(longitude_2)&language=zh-Hans&unit=c"
+        let str = "https://api.seniverse.com/v3/weather/now.json?key=b80incxtoazyui2b&location=\(latitude_2):\(longitude_2)&language=zh-Hans&unit=c"  //经纬度定位
+       // let str = "https://api.seniverse.com/v3/weather/now.json?key=b80incxtoazyui2b&location=ip&language=zh-Hans&unit=c"    //ip定位
         let url = NSURL(string: str)
         let data = NSData(contentsOf: url! as URL)
         
@@ -223,11 +224,15 @@ class CalendarViewController: UIViewController, GCCalendarViewDelegate, CLLocati
     }
     
     //MARK: location manager delegate
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    //func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
+    {
         
         let currLocation:CLLocation = locations.last!
         longitude = currLocation.coordinate.longitude
         latitude = currLocation.coordinate.latitude
+        self.loadWeatherInfo()
      
     }
+    
 }
