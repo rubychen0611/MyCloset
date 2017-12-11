@@ -46,7 +46,6 @@ class CalendarViewController: UIViewController, GCCalendarViewDelegate, CLLocati
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         locationManager.requestWhenInUseAuthorization()
-       // locationManager.requestAlwaysAuthorization()
         self.addThread()
         self.addCalendarView()
         self.addCalendarViewConstraints()
@@ -55,12 +54,10 @@ class CalendarViewController: UIViewController, GCCalendarViewDelegate, CLLocati
     //MARK: Private Methods
     private func addThread()
     {
-        queue = OperationQueue()
+        //queue = OperationQueue()
         let loadLocationOperation = BlockOperation(block:
         {
             self.loadLocation()
-         //   self.loadWeatherInfo()
-           // OperationQueue.main.addOperation({self.updateWeather()})
             return
         })
         loadLocationOperation.completionBlock =
@@ -68,19 +65,6 @@ class CalendarViewController: UIViewController, GCCalendarViewDelegate, CLLocati
             print("loadLocationOperation completed, cancelled:\(loadLocationOperation.isCancelled)")
         }
         queue.addOperation(loadLocationOperation)
-        
-        let loadWeatherOperation = BlockOperation(block:
-        {
-            self.loadWeatherInfo()
-            OperationQueue.main.addOperation({self.updateWeather()})
-        })
-        loadWeatherOperation.completionBlock =
-            {
-                print("loadWeatherOperation completed, cancelled:\(loadLocationOperation.isCancelled)")
-        }
-      loadWeatherOperation.addDependency(loadLocationOperation)
-        queue.addOperation(loadWeatherOperation)
-        
         
     }
     private func loadLocation()
@@ -122,9 +106,6 @@ class CalendarViewController: UIViewController, GCCalendarViewDelegate, CLLocati
         
         if data == nil
         {
-            //cityLabel.text = "定位失败"
-            //weatherLabel.text = "天气获取失败"
-           // temperatureLabel.text =  "气温获取失败"
             return
         }
         
@@ -202,16 +183,20 @@ class CalendarViewController: UIViewController, GCCalendarViewDelegate, CLLocati
     {
         if favouriteMatches[CalendarViewController.selectedDate] == nil
         {
+            if matchImageView.image != #imageLiteral(resourceName: "defaultPhoto")
+            {
             favouriteMatches[CalendarViewController.selectedDate] = dailyMatches[CalendarViewController.selectedDate]
             collectButton.setImage(#imageLiteral(resourceName: "cellect_like"), for:.normal)  //设置图标
+            saveFavouriteMatches()
+            }
         }
         else
         {
             favouriteMatches.removeValue(forKey: CalendarViewController.selectedDate)
             collectButton.setImage(#imageLiteral(resourceName: "collect"), for:.normal)
+            saveFavouriteMatches()
             //从收藏中删除
         }
-        saveFavouriteMatches()
     }
     //MARK: GCCalendarView delegate
     
@@ -250,7 +235,6 @@ class CalendarViewController: UIViewController, GCCalendarViewDelegate, CLLocati
     {
         if sender.source is AddMatchViewController
         {
-            //matchImageView.image = matchImage //改
             saveDailyMatches()
             if let match = dailyMatches[CalendarViewController.selectedDate]
             {
@@ -260,14 +244,24 @@ class CalendarViewController: UIViewController, GCCalendarViewDelegate, CLLocati
     }
     
     //MARK: location manager delegate
-    //func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
         
         let currLocation:CLLocation = locations.last!
         longitude = currLocation.coordinate.longitude
         latitude = currLocation.coordinate.latitude
-       // self.loadWeatherInfo()
+        
+        let loadWeatherOperation = BlockOperation(block:
+        {
+            self.loadWeatherInfo()
+            OperationQueue.main.addOperation({self.updateWeather()})
+        })
+    
+        loadWeatherOperation.completionBlock =
+            {
+                print("loadWeatherOperation completed, cancelled:\(loadWeatherOperation.isCancelled)")
+        }
+        queue.addOperation(loadWeatherOperation)
      
     }
     
