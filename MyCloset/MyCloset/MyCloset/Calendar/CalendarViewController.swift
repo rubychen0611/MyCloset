@@ -56,18 +56,31 @@ class CalendarViewController: UIViewController, GCCalendarViewDelegate, CLLocati
     private func addThread()
     {
         queue = OperationQueue()
-        let loadWeatherOperation = BlockOperation(block:
+        let loadLocationOperation = BlockOperation(block:
         {
             self.loadLocation()
          //   self.loadWeatherInfo()
-            OperationQueue.main.addOperation({self.updateWeather()})
+           // OperationQueue.main.addOperation({self.updateWeather()})
             return
         })
-        loadWeatherOperation.completionBlock =
+        loadLocationOperation.completionBlock =
         {
-            print("loadWeatherOperation completed, cancelled:\(loadWeatherOperation.isCancelled)")
+            print("loadLocationOperation completed, cancelled:\(loadLocationOperation.isCancelled)")
         }
+        queue.addOperation(loadLocationOperation)
+        
+        let loadWeatherOperation = BlockOperation(block:
+        {
+            self.loadWeatherInfo()
+            OperationQueue.main.addOperation({self.updateWeather()})
+        })
+        loadWeatherOperation.completionBlock =
+            {
+                print("loadWeatherOperation completed, cancelled:\(loadLocationOperation.isCancelled)")
+        }
+      loadWeatherOperation.addDependency(loadLocationOperation)
         queue.addOperation(loadWeatherOperation)
+        
         
     }
     private func loadLocation()
@@ -103,14 +116,15 @@ class CalendarViewController: UIViewController, GCCalendarViewDelegate, CLLocati
         let longitude_2 = String(format: "%.2f", longitude!)
         let latitude_2 = String(format: "%.2f", latitude!)
         let str = "https://api.seniverse.com/v3/weather/now.json?key=b80incxtoazyui2b&location=\(latitude_2):\(longitude_2)&language=zh-Hans&unit=c"  //经纬度定位
-       // let str = "https://api.seniverse.com/v3/weather/now.json?key=b80incxtoazyui2b&location=ip&language=zh-Hans&unit=c"    //ip定位
+        //let str = "https://api.seniverse.com/v3/weather/now.json?key=b80incxtoazyui2b&location=ip&language=zh-Hans&unit=c"    //ip定位
         let url = NSURL(string: str)
         let data = NSData(contentsOf: url! as URL)
+        
         if data == nil
         {
-            cityLabel.text = "定位失败"
-            weatherLabel.text = "天气获取失败"
-            temperatureLabel.text =  "气温获取失败"
+            //cityLabel.text = "定位失败"
+            //weatherLabel.text = "天气获取失败"
+           // temperatureLabel.text =  "气温获取失败"
             return
         }
         
@@ -253,7 +267,7 @@ class CalendarViewController: UIViewController, GCCalendarViewDelegate, CLLocati
         let currLocation:CLLocation = locations.last!
         longitude = currLocation.coordinate.longitude
         latitude = currLocation.coordinate.latitude
-        self.loadWeatherInfo()
+       // self.loadWeatherInfo()
      
     }
     
