@@ -12,7 +12,10 @@ import os.log
 import CoreLocation
 import MapKit
 
-
+enum LoadingWeatherError: Error
+{
+    case loseNetworkConnection  //网络连接错误
+}
 class CalendarViewController: UIViewController, GCCalendarViewDelegate, CLLocationManagerDelegate
 {
     
@@ -58,12 +61,14 @@ class CalendarViewController: UIViewController, GCCalendarViewDelegate, CLLocati
             self.loadLocation()
          //   self.loadWeatherInfo()
             OperationQueue.main.addOperation({self.updateWeather()})
+            return
         })
         loadWeatherOperation.completionBlock =
         {
             print("loadWeatherOperation completed, cancelled:\(loadWeatherOperation.isCancelled)")
         }
         queue.addOperation(loadWeatherOperation)
+        
     }
     private func loadLocation()
     {
@@ -77,10 +82,20 @@ class CalendarViewController: UIViewController, GCCalendarViewDelegate, CLLocati
     }
     private func updateWeather()
     {
-        self.cityLabel.text = "\(self.city!)"
-        self.weatherLabel.text = "\(self.weather!)"
-        self.temperatureLabel.text = "\(self.temperature!)℃"
-        self.weatherImage.image = UIImage(named:self.code!)
+        if self.city != nil && self.weather != nil && self.temperature != nil && self.code != nil
+        {
+            self.cityLabel.text = "\(self.city!)"
+            self.weatherLabel.text = "\(self.weather!)"
+            self.temperatureLabel.text = "\(self.temperature!)℃"
+            self.weatherImage.image = UIImage(named:self.code!)
+        }
+        else
+        {
+            self.cityLabel.text = "定位失败"
+            self.weatherLabel.text = "天气获取失败"
+            self.temperatureLabel.text =  "气温获取失败"
+        }
+        
     }
     private func loadWeatherInfo()
     {
@@ -91,6 +106,13 @@ class CalendarViewController: UIViewController, GCCalendarViewDelegate, CLLocati
        // let str = "https://api.seniverse.com/v3/weather/now.json?key=b80incxtoazyui2b&location=ip&language=zh-Hans&unit=c"    //ip定位
         let url = NSURL(string: str)
         let data = NSData(contentsOf: url! as URL)
+        if data == nil
+        {
+            cityLabel.text = "定位失败"
+            weatherLabel.text = "天气获取失败"
+            temperatureLabel.text =  "气温获取失败"
+            return
+        }
         
         do{
             let json =
@@ -106,7 +128,7 @@ class CalendarViewController: UIViewController, GCCalendarViewDelegate, CLLocati
             code = (now as AnyObject).object(forKey: "code") as? String
         }catch
         {
-            //print("Error with loading weather infomation")
+            print("Error with loading weather infomation")
             cityLabel.text = "定位失败"
             weatherLabel.text = "天气获取失败"
             temperatureLabel.text =  "气温获取失败"
