@@ -313,6 +313,9 @@
                                                     <constraint firstAttribute="width" constant="40" id="rRj-NG-CRQ"/>
                                                 </constraints>
                                                 <state key="normal" image="bgcolor"/>
+                                                <connections>
+                                                    <action selector="setBackGroundColorWithSender:" destination="enV-Kz-Btn" eventType="touchUpInside" id="I6s-0u-XSd"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BPH-o1-azO">
                                                 <rect key="frame" x="220" y="0.0" width="40" height="40"/>

@@ -13,11 +13,12 @@ var curSelectedLargeClass_Match = 0
 var curSelectedSubclass_Match = 0
 var curSelectedImageIndex_Match = 0
 
-class AddMatchViewController: UIViewController {
+class AddMatchViewController: UIViewController, WDColorPickerViewDelegate {
     
     //MARK: Properties
     @IBOutlet weak var EditMatchView: BackgroundView!
     @IBOutlet weak var SaveButton: UIBarButtonItem!
+
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -63,5 +64,14 @@ class AddMatchViewController: UIViewController {
     @IBAction func deleteCurSelectedPhotoView(sender: UIButton)
     {
         EditMatchView.deletePhotoView()
+    }
+    @IBAction func setBackGroundColor(sender: UIButton)
+    {
+        WDColorPickerView.showPicker(delegate: self, initialColor: self.EditMatchView.backgroundColor)
+    }
+    
+    //MARK: WDColorPickerView delegate
+    func colorSelected(colorPicker: WDColorPickerView, color: UIColor) {
+        self.EditMatchView.backgroundColor = color
     }
 }
