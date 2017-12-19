@@ -12,6 +12,8 @@ class MatchCollectionViewController: UICollectionViewController
 {
 
     var fmArray : [String] = []
+    @IBOutlet weak var tipsLabel: UILabel!
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -42,6 +44,14 @@ class MatchCollectionViewController: UICollectionViewController
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
+        if favouriteMatches.count == 0
+        {
+            tipsLabel.isHidden = false
+        }
+        else
+        {
+            tipsLabel.isHidden = true
+        }
         return favouriteMatches.count
     }
 
