@@ -8,24 +8,34 @@
 
 import UIKit
 
-class CutImageViewController: UIViewController {
+class CutImageViewController: UIViewController
+{
 
     @IBOutlet weak var imageView: UIImageView!
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
         if let image = curSelectedPhoto
         {
             imageView.image = image
         }
-        // Dispose of any resources that can be recreated.
+        // Do any additional setup after loading the view.
+
+        
+    let rightBarBtn = UIBarButtonItem(title: "", style: .plain, target: self,
+                                         action: #selector(backToPrevious))
+        rightBarBtn.image = #imageLiteral(resourceName: "save")
+    self.navigationItem.rightBarButtonItem = rightBarBtn
     }
+
+//返回按钮点击响应
+@objc func backToPrevious()
+{
+   
+    self.navigationController!.popViewController(animated: true)
+    //dismiss(animated: true, completion: nil)
     
+}
 
     /*
     // MARK: - Navigation

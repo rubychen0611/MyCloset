@@ -9,8 +9,8 @@
 import UIKit
 import os.log
 
-var curSelectedPhoto: UIImage? = nil
-class NewGarmentViewController: UIViewController,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource
+var curSelectedPhoto: UIImage? = nil // 暂用
+class NewGarmentViewController: UIViewController,UITextFieldDelegate,UINavigationControllerDelegate,UIPickerViewDelegate,UIPickerViewDataSource,UIImagePickerControllerDelegate
 {
     //MARK: Properties
     var garment: Garment?
@@ -185,7 +185,7 @@ class NewGarmentViewController: UIViewController,UITextFieldDelegate,UIImagePick
         let imagePickerController = UIImagePickerController()
         imagePickerController.sourceType = .photoLibrary
         imagePickerController.delegate = self
-   
+        
         present(imagePickerController, animated: true, completion: nil)
     }
     @IBAction func OnSeasonButtonPressed(_ sender: UIButton) //设置季节按钮动作
@@ -245,36 +245,7 @@ class NewGarmentViewController: UIViewController,UITextFieldDelegate,UIImagePick
         view.endEditing(true)
     }
     
-    //MARK: UIImagePickerController代理方法
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        // Dismiss the picker if the user canceled.
-        dismiss(animated: true, completion: nil)
-    }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
-    {
-        
-        // The info dictionary may contain multiple representations of the image. You want to use the original.
-        
-        guard let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else
-        {
-            fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
-        }
-        curSelectedPhoto = selectedImage
-        // Set photoImageView to display the selected image.
-        GarmentImage.image = selectedImage
-        if GarmentImage.image != #imageLiteral(resourceName: "defaultPhoto")
-        {
-            SaveButton.isEnabled = true
-        }
-        // Dismiss the picker.
-       // dismiss(animated: true, completion: nil)
-        
-        let sb = UIStoryboard(name: "Main", bundle:nil)
-        let vc = sb.instantiateViewController(withIdentifier: "CutImageViewController") as! CutImageViewController
-        
-        picker.pushViewController(vc, animated: true)
-    }
    
     
     //MARK: UIPickerView代理方法
@@ -322,6 +293,39 @@ class NewGarmentViewController: UIViewController,UITextFieldDelegate,UIImagePick
         curRight = subclasses[curLeftRow][curRightRow]
         
     }
+    
+    //MARK: UIImagePickerController Delegate
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        // Dismiss the picker if the user canceled.
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
+    {
+        
+        
+        guard let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else
+        {
+            fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
+        }
+        curSelectedPhoto = selectedImage
+        
+        
+        GarmentImage.image = selectedImage
+         if GarmentImage.image != #imageLiteral(resourceName: "defaultPhoto")
+         {
+         SaveButton.isEnabled = true
+         }
+        
+        
+        let sb = UIStoryboard(name: "Main", bundle:nil)
+        let vc = sb.instantiateViewController(withIdentifier: "CutImageViewController") as! CutImageViewController
+        
+        dismiss(animated: false, completion: nil)
+        self.navigationController?.pushViewController(vc, animated: true)
+     
+    }
+    
     
 }
 
