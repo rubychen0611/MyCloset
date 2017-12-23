@@ -22,6 +22,7 @@
 		441D3B3A1FE962310089FA65 /* WDColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441D3B351FE962300089FA65 /* WDColorPickerView.swift */; };
 		441D3B3B1FE962310089FA65 /* HueSaturationColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441D3B361FE962300089FA65 /* HueSaturationColorPickerView.swift */; };
 		441D3B3C1FE962310089FA65 /* BrightnessColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441D3B371FE962300089FA65 /* BrightnessColorPickerView.swift */; };
+		441D3B3E1FEE4D640089FA65 /* CutImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441D3B3D1FEE4D640089FA65 /* CutImageViewController.swift */; };
 		4458D52C1FD6E01B0003E0C2 /* AddMatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4458D52B1FD6E01A0003E0C2 /* AddMatchViewController.swift */; };
 		4458D52E1FD6E03F0003E0C2 /* LargeClassTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4458D52D1FD6E03F0003E0C2 /* LargeClassTableViewController.swift */; };
 		4458D5301FD6E0540003E0C2 /* SubClassTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4458D52F1FD6E0540003E0C2 /* SubClassTableViewController.swift */; };
@@ -96,6 +97,7 @@
 		441D3B351FE962300089FA65 /* WDColorPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WDColorPickerView.swift; sourceTree = "<group>"; };
 		441D3B361FE962300089FA65 /* HueSaturationColorPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HueSaturationColorPickerView.swift; sourceTree = "<group>"; };
 		441D3B371FE962300089FA65 /* BrightnessColorPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrightnessColorPickerView.swift; sourceTree = "<group>"; };
+		441D3B3D1FEE4D640089FA65 /* CutImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutImageViewController.swift; sourceTree = "<group>"; };
 		441F60601FD58EED00331F80 /* GCCalendar.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = GCCalendar.xcodeproj; sourceTree = "<group>"; };
 		4458D52B1FD6E01A0003E0C2 /* AddMatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMatchViewController.swift; sourceTree = "<group>"; };
 		4458D52D1FD6E03F0003E0C2 /* LargeClassTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeClassTableViewController.swift; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 				44E814691FC3068A00A5A6EE /* ClothesViewController.swift */,
 				447D3F851FC963E2006F5A17 /* NewGarmentViewController.swift */,
 				18A31C9B1FCBFFA80010CF15 /* GarmentCollectionViewCell.swift */,
+				441D3B3D1FEE4D640089FA65 /* CutImageViewController.swift */,
 			);
 			path = Closet;
 			sourceTree = "<group>";
@@ -386,6 +389,7 @@
 				447D3F861FC963E2006F5A17 /* NewGarmentViewController.swift in Sources */,
 				441D3B381FE962310089FA65 /* ColorPickerView.swift in Sources */,
 				4458D5321FD6E09C0003E0C2 /* ClothesCollectionViewController.swift in Sources */,
+				441D3B3E1FEE4D640089FA65 /* CutImageViewController.swift in Sources */,
 				44E8146A1FC3068A00A5A6EE /* ClothesViewController.swift in Sources */,
 				4458D5301FD6E0540003E0C2 /* SubClassTableViewController.swift in Sources */,
 			);

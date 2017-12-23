@@ -8,6 +8,8 @@
 
 import UIKit
 import os.log
+
+var curSelectedPhoto: UIImage? = nil
 class NewGarmentViewController: UIViewController,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource
 {
     //MARK: Properties
@@ -183,6 +185,7 @@ class NewGarmentViewController: UIViewController,UITextFieldDelegate,UIImagePick
         let imagePickerController = UIImagePickerController()
         imagePickerController.sourceType = .photoLibrary
         imagePickerController.delegate = self
+   
         present(imagePickerController, animated: true, completion: nil)
     }
     @IBAction func OnSeasonButtonPressed(_ sender: UIButton) //设置季节按钮动作
@@ -252,11 +255,12 @@ class NewGarmentViewController: UIViewController,UITextFieldDelegate,UIImagePick
     {
         
         // The info dictionary may contain multiple representations of the image. You want to use the original.
+        
         guard let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else
         {
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }
-        
+        curSelectedPhoto = selectedImage
         // Set photoImageView to display the selected image.
         GarmentImage.image = selectedImage
         if GarmentImage.image != #imageLiteral(resourceName: "defaultPhoto")
@@ -264,7 +268,12 @@ class NewGarmentViewController: UIViewController,UITextFieldDelegate,UIImagePick
             SaveButton.isEnabled = true
         }
         // Dismiss the picker.
-        dismiss(animated: true, completion: nil)
+       // dismiss(animated: true, completion: nil)
+        
+        let sb = UIStoryboard(name: "Main", bundle:nil)
+        let vc = sb.instantiateViewController(withIdentifier: "CutImageViewController") as! CutImageViewController
+        
+        picker.pushViewController(vc, animated: true)
     }
    
     
