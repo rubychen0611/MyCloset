@@ -64,7 +64,7 @@ class BackgroundView: UIView
         
     }
     
-    public func generateScreenShot() -> UIImage
+  /*  public func generateScreenShot() -> UIImage
     {
         UIGraphicsBeginImageContextWithOptions(frame.size, false, UIScreen.main.scale)
         layer.render(in: UIGraphicsGetCurrentContext()!)
@@ -72,7 +72,7 @@ class BackgroundView: UIView
         UIGraphicsEndImageContext()
         return image!
     }
-    
+    */
     public func getClothes() -> [SingleGarment]
     {
         var clothes : [SingleGarment] = []
@@ -86,4 +86,15 @@ class BackgroundView: UIView
         }
         return clothes
     }
+}
+extension UIView
+{
+    public func generateScreenShot() -> UIImage
+    {
+        UIGraphicsBeginImageContextWithOptions(frame.size, false, UIScreen.main.scale)
+        layer.render(in: UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image!
+ }
 }

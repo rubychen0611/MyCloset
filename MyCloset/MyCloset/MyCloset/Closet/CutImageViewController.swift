@@ -11,13 +11,15 @@ import UIKit
 class CutImageViewController: UIViewController
 {
 
-    @IBOutlet weak var imageView: UIImageView!
+  //  @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var drawView: CutImageView!
     override func viewDidLoad()
     {
         super.viewDidLoad()
         if let image = curSelectedPhoto
         {
-            imageView.image = image
+            drawView.setImage(image: image)
+           
         }
         // Do any additional setup after loading the view.
 
@@ -31,10 +33,10 @@ class CutImageViewController: UIViewController
 //返回按钮点击响应
 @objc func backToPrevious()
 {
-   
+    //curSelectedPhoto = drawView.getImage()
+    let vc = self.navigationController!.viewControllers[self.navigationController!.viewControllers.count - 2] as! NewGarmentViewController
+    vc.GarmentImage.image = drawView.getImage()
     self.navigationController!.popViewController(animated: true)
-    //dismiss(animated: true, completion: nil)
-    
 }
 
     /*
@@ -46,5 +48,5 @@ class CutImageViewController: UIViewController
         // Pass the selected object to the new view controller.
     }
     */
-
 }
+

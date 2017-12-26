@@ -23,6 +23,7 @@
 		441D3B3B1FE962310089FA65 /* HueSaturationColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441D3B361FE962300089FA65 /* HueSaturationColorPickerView.swift */; };
 		441D3B3C1FE962310089FA65 /* BrightnessColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441D3B371FE962300089FA65 /* BrightnessColorPickerView.swift */; };
 		441D3B3E1FEE4D640089FA65 /* CutImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441D3B3D1FEE4D640089FA65 /* CutImageViewController.swift */; };
+		4456F8081FEF942800A15BF6 /* CutImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4456F8071FEF942800A15BF6 /* CutImageView.swift */; };
 		4458D52C1FD6E01B0003E0C2 /* AddMatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4458D52B1FD6E01A0003E0C2 /* AddMatchViewController.swift */; };
 		4458D52E1FD6E03F0003E0C2 /* LargeClassTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4458D52D1FD6E03F0003E0C2 /* LargeClassTableViewController.swift */; };
 		4458D5301FD6E0540003E0C2 /* SubClassTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4458D52F1FD6E0540003E0C2 /* SubClassTableViewController.swift */; };
@@ -99,6 +100,7 @@
 		441D3B371FE962300089FA65 /* BrightnessColorPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrightnessColorPickerView.swift; sourceTree = "<group>"; };
 		441D3B3D1FEE4D640089FA65 /* CutImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutImageViewController.swift; sourceTree = "<group>"; };
 		441F60601FD58EED00331F80 /* GCCalendar.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = GCCalendar.xcodeproj; sourceTree = "<group>"; };
+		4456F8071FEF942800A15BF6 /* CutImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutImageView.swift; sourceTree = "<group>"; };
 		4458D52B1FD6E01A0003E0C2 /* AddMatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMatchViewController.swift; sourceTree = "<group>"; };
 		4458D52D1FD6E03F0003E0C2 /* LargeClassTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeClassTableViewController.swift; sourceTree = "<group>"; };
 		4458D52F1FD6E0540003E0C2 /* SubClassTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubClassTableViewController.swift; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 				447D3F851FC963E2006F5A17 /* NewGarmentViewController.swift */,
 				18A31C9B1FCBFFA80010CF15 /* GarmentCollectionViewCell.swift */,
 				441D3B3D1FEE4D640089FA65 /* CutImageViewController.swift */,
+				4456F8071FEF942800A15BF6 /* CutImageView.swift */,
 			);
 			path = Closet;
 			sourceTree = "<group>";
@@ -378,6 +381,7 @@
 				44E814651FC1A4EB00A5A6EE /* ClosetCollectionReusableView.swift in Sources */,
 				4458D52C1FD6E01B0003E0C2 /* AddMatchViewController.swift in Sources */,
 				4458D53F1FDA38900003E0C2 /* Match.swift in Sources */,
+				4456F8081FEF942800A15BF6 /* CutImageView.swift in Sources */,
 				441D3B3C1FE962310089FA65 /* BrightnessColorPickerView.swift in Sources */,
 				4458D52E1FD6E03F0003E0C2 /* LargeClassTableViewController.swift in Sources */,
 				441D3B3A1FE962310089FA65 /* WDColorPickerView.swift in Sources */,
@@ -549,7 +553,7 @@
 				DEVELOPMENT_TEAM = 2VWVJ436YF;
 				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = MyCloset/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.edu.nju.MyCloset;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -567,7 +571,7 @@
 				DEVELOPMENT_TEAM = 2VWVJ436YF;
 				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = MyCloset/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.edu.nju.MyCloset;
 				PRODUCT_NAME = "$(TARGET_NAME)";

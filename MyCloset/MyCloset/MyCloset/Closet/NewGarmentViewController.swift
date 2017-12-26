@@ -9,7 +9,7 @@
 import UIKit
 import os.log
 
-var curSelectedPhoto: UIImage? = nil // 暂用
+var curSelectedPhoto: UIImage? = #imageLiteral(resourceName: "defaultPhoto") // 暂用
 class NewGarmentViewController: UIViewController,UITextFieldDelegate,UINavigationControllerDelegate,UIPickerViewDelegate,UIPickerViewDataSource,UIImagePickerControllerDelegate
 {
     //MARK: Properties
@@ -77,11 +77,13 @@ class NewGarmentViewController: UIViewController,UITextFieldDelegate,UINavigatio
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning()
+    /* func viewWillAppear(_ animated: Bool)
     {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+        if GarmentImage.image == #imageLiteral(resourceName: "defaultPhoto") && curSelectedPhoto != #imageLiteral(resourceName: "defaultPhoto")
+        {
+            GarmentImage.image = curSelectedPhoto
+        }
+    }*/
     //MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -311,19 +313,21 @@ class NewGarmentViewController: UIViewController,UITextFieldDelegate,UINavigatio
         curSelectedPhoto = selectedImage
         
         
-        GarmentImage.image = selectedImage
-         if GarmentImage.image != #imageLiteral(resourceName: "defaultPhoto")
-         {
-         SaveButton.isEnabled = true
-         }
-        
-        
+       
         let sb = UIStoryboard(name: "Main", bundle:nil)
         let vc = sb.instantiateViewController(withIdentifier: "CutImageViewController") as! CutImageViewController
         
         dismiss(animated: false, completion: nil)
         self.navigationController?.pushViewController(vc, animated: true)
-     
+        GarmentImage.image = curSelectedPhoto
+        
+        
+        if GarmentImage.image != #imageLiteral(resourceName: "defaultPhoto")
+        {
+            SaveButton.isEnabled = true
+        }
+        
+        
     }
     
     
