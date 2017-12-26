@@ -80,6 +80,11 @@ class CutImageView: UIView
         {
             let point = touch.location(in:self)     //获取当前点击位置
             points += [point]
+            if points.count < 3
+            {
+                ifCut = false
+                points = []
+            }
             self.setNeedsDisplay()
         }
     }
@@ -92,8 +97,6 @@ class CutImageView: UIView
         {
             if ifCut == true
             {
-                //let (newim, cutim) = im.toBeCut(points, drawRect)
-               // cutImage = cutim
                 im.alpha(0.4).draw(in:drawRect)
                 let newim = im.toBeCut(points, drawRect)
                 newim.draw(in: drawRect)
