@@ -23,13 +23,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         else
         {
-            closet = Array<Array<Array<Garment>>>()
+            closet = [[[Garment]]]()
             for i in 0...largeclasses.count-1
             {
-                closet.append(Array<Array<Garment>>())
+                closet.append([[Garment]]())
                 for _ in 0...subclasses[i].count-1
                 {
-                    closet[i].append(Array<Garment>())
+                    closet[i].append([Garment]())
                 }
             }
             Garment.loadSampleGarments()

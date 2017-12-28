@@ -13,7 +13,8 @@ var curSelectedLargeClass_Match = 0
 var curSelectedSubclass_Match = 0
 var curSelectedImageIndex_Match = 0
 
-class AddMatchViewController: UIViewController, WDColorPickerViewDelegate {
+class AddMatchViewController: UIViewController, WDColorPickerViewDelegate
+{
     
     //MARK: Properties
     @IBOutlet weak var EditMatchView: BackgroundView!
@@ -73,5 +74,11 @@ class AddMatchViewController: UIViewController, WDColorPickerViewDelegate {
     //MARK: WDColorPickerView delegate
     func colorSelected(colorPicker: WDColorPickerView, color: UIColor) {
         self.EditMatchView.backgroundColor = color
+    }
+    
+    //MARK: Public functions
+    public func recommendMatchRandomly()
+    {
+        EditMatchView.recommendMatchRandomly()
     }
 }

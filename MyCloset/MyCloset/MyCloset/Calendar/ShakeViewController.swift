@@ -51,23 +51,17 @@ class ShakeViewController: UIViewController, AVAudioPlayerDelegate {
             }, completion: nil)
             }
         
-        /**
-         取消摇动
-         */
+        //取消摇动
         func motionCancelled(motion: UIEventSubtype, withEvent event: UIEvent?)
         {
             print("取消摇动")
         }
         
         
-        /**
-         摇动结束
-         */
+    //摇动结束
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?)
     {
             print("摇动结束")
-            ///此处设置摇一摇需要实现的功能
-            
             /// 设置音效
         let path = Bundle.main.path(forResource: "rock_end", ofType:"mp3")
             let data = NSData(contentsOfFile: path!)
@@ -76,6 +70,11 @@ class ShakeViewController: UIViewController, AVAudioPlayerDelegate {
             self.player?.updateMeters()//更新数据
             self.player?.prepareToPlay()//准备数据
             self.player?.play()
+        
+        let sb = UIStoryboard(name: "Main", bundle:nil)
+        let vc = sb.instantiateViewController(withIdentifier: "AddMatchViewController") as! AddMatchViewController
+        //vc.recommendMatchRandomly()
+        self.present(vc, animated: true, completion:{ ()->Void in vc.recommendMatchRandomly() })
     }
     
     @IBAction func cancel(_ sender: UIBarButtonItem)

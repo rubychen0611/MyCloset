@@ -47,6 +47,60 @@ class BackgroundView: UIView
         photoViews.append(newImageView)
         addSubview(newImageView)
     }
+    public func recommendMatchRandomly()
+    {
+        var tops :[Garment] = []
+        var pants :[Garment] = []
+        var shoes :[Garment] = []
+        for i in 0 ..< largeclasses.count
+        {
+            for j in 0 ..< subclasses[i].count
+            {
+                for garment in closet[i][j]
+                {
+                    if(garment.largeclass == 0)
+                    {
+                        tops += [garment]
+                    }
+                    else if(garment.largeclass == 1)
+                    {
+                        pants += [garment]
+                    }
+                    else if(garment.largeclass == 4)
+                    {
+                        shoes += [garment]
+                    }
+                }
+            }
+        }
+        let x = UIScreen.main.bounds.width / 2.0 - 90;
+        var y = 0;
+        if(!tops.isEmpty)
+        {
+            let rand:Int = Int(arc4random()) % tops.count
+            let image = tops[rand].photo
+            let newImageView = GarmentPhotoView(frame: CGRect(x: Int(x), y: y, width:180, height: 180),image:image)
+            y += 200
+            self.addNewPhotoView(newImageView)
+        }
+        if(!pants.isEmpty)
+        {
+            let rand:Int = Int(arc4random()) % pants.count
+            let image = pants[rand].photo
+            let newImageView = GarmentPhotoView(frame: CGRect(x: Int(x), y: y, width:180, height: 180),image:image)
+            y += 200
+            self.addNewPhotoView(newImageView)
+        }
+        if(!shoes.isEmpty)
+        {
+            let rand:Int = Int(arc4random()) % shoes.count
+            let image = shoes[rand].photo
+            let newImageView = GarmentPhotoView(frame: CGRect(x: Int(x), y: y, width:180, height: 180),image:image)
+            y += 200
+            self.addNewPhotoView(newImageView)
+        }
+        
+    }
     public func deletePhotoView()   //删除照片
     {
         if let iv = curSelectedPhotoView
@@ -64,15 +118,6 @@ class BackgroundView: UIView
         
     }
     
-  /*  public func generateScreenShot() -> UIImage
-    {
-        UIGraphicsBeginImageContextWithOptions(frame.size, false, UIScreen.main.scale)
-        layer.render(in: UIGraphicsGetCurrentContext()!)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return image!
-    }
-    */
     public func getClothes() -> [SingleGarment]
     {
         var clothes : [SingleGarment] = []

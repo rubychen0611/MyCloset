@@ -334,16 +334,12 @@ class NewGarmentViewController: UIViewController,UITextFieldDelegate,UINavigatio
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
     {
-        
-        
         guard let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else
         {
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }
         curSelectedPhoto = selectedImage
         
-        
-       
         let sb = UIStoryboard(name: "Main", bundle:nil)
         let vc = sb.instantiateViewController(withIdentifier: "CutImageViewController") as! CutImageViewController
         

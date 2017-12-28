@@ -332,7 +332,7 @@
         <!--Add Match View Controller-->
         <scene sceneID="0xK-20-ee6">
             <objects>
-                <viewController id="enV-Kz-Btn" customClass="AddMatchViewController" customModule="MyCloset" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddMatchViewController" id="enV-Kz-Btn" customClass="AddMatchViewController" customModule="MyCloset" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4mo-gR-PeE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
