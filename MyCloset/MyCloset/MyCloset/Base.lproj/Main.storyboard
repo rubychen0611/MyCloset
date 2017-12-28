@@ -217,6 +217,9 @@
                                                     <constraint firstAttribute="width" constant="30" id="wAr-Ta-XBt"/>
                                                 </constraints>
                                                 <state key="normal" image="shake"/>
+                                                <connections>
+                                                    <segue destination="Qbf-YO-ngk" kind="presentation" id="CLF-e0-z23"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -272,6 +275,59 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eLx-Rv-y0D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="107.24637681159422" y="69.293478260869577"/>
+        </scene>
+        <!--Shake View Controller-->
+        <scene sceneID="KWr-iT-ucv">
+            <objects>
+                <viewController id="Qbf-YO-ngk" customClass="ShakeViewController" customModule="MyCloset" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8ZL-4X-SfN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eag-GF-IhE">
+                                <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="摇一摇随机搭配" id="l0y-Vo-tcs">
+                                        <barButtonItem key="leftBarButtonItem" title="取消" id="uU0-Ny-yr3">
+                                            <connections>
+                                                <action selector="cancel:" destination="Qbf-YO-ngk" id="euY-ER-3G1"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="f2g-ZR-bDE">
+                                <rect key="frame" x="59.666666666666657" y="230.66666666666666" width="294.66666666666674" height="294.66666666666674"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rock_up" translatesAutoresizingMaskIntoConstraints="NO" id="vco-hu-Kz1">
+                                        <rect key="frame" x="0.0" y="0.0" width="294.66666666666669" height="147.33333333333334"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rock_down" translatesAutoresizingMaskIntoConstraints="NO" id="EVi-0b-zca">
+                                        <rect key="frame" x="0.0" y="147.33333333333331" width="294.66666666666669" height="147.33333333333331"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="f2g-ZR-bDE" secondAttribute="height" multiplier="1:1" id="F0Y-L2-GnZ"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.17996382713317871" green="0.19592654705047607" blue="0.20001006126403809" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="f2g-ZR-bDE" firstAttribute="centerY" secondItem="l9f-1c-tuX" secondAttribute="centerY" id="GeR-Xl-8Z6"/>
+                            <constraint firstItem="f2g-ZR-bDE" firstAttribute="centerX" secondItem="l9f-1c-tuX" secondAttribute="centerX" id="saj-ZI-h34"/>
+                            <constraint firstItem="f2g-ZR-bDE" firstAttribute="height" secondItem="8ZL-4X-SfN" secondAttribute="height" multiplier="0.4" id="wn4-0f-2Ab"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="l9f-1c-tuX"/>
+                    </view>
+                    <connections>
+                        <outlet property="rockdownImage" destination="EVi-0b-zca" id="M4h-ui-gnc"/>
+                        <outlet property="rockupImage" destination="vco-hu-Kz1" id="W5q-Rv-aIw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HYB-wx-ZCy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="412" y="900"/>
         </scene>
         <!--Add Match View Controller-->
         <scene sceneID="0xK-20-ee6">
@@ -996,6 +1052,8 @@
         <image name="delete" width="48" height="48"/>
         <image name="match" width="24" height="23"/>
         <image name="modify" width="48" height="48"/>
+        <image name="rock_down" width="450" height="254"/>
+        <image name="rock_up" width="450" height="254"/>
         <image name="save" width="30" height="30"/>
         <image name="shake" width="48" height="48"/>
         <image name="weatherbg" width="1392" height="744"/>

@@ -184,11 +184,40 @@ class NewGarmentViewController: UIViewController,UITextFieldDelegate,UINavigatio
         GarmentPrice.resignFirstResponder()
         GarmentExtraInfo.resignFirstResponder()
         
+      
         let imagePickerController = UIImagePickerController()
-        imagePickerController.sourceType = .photoLibrary
         imagePickerController.delegate = self
+        // self.navigationController.delegate = self
         
-        present(imagePickerController, animated: true, completion: nil)
+        let LibraryOrCameraPicker = UIAlertController(title:"选择相机或相册",message: nil, preferredStyle: .actionSheet)
+        let FromCamera = UIAlertAction(title: "相机", style: .default, handler: {action in
+            imagePickerController.sourceType = .camera
+            if UIImagePickerController.isSourceTypeAvailable(.camera)
+            {
+                self.present(imagePickerController, animated: true, completion: nil)
+            }else
+            {
+                //未授予相机权限
+                return
+            }
+        })
+        
+        let FromLibrary = UIAlertAction(title: "相册", style: .default, handler: {action in
+            imagePickerController.sourceType = .photoLibrary
+            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary)
+            {
+                self.present(imagePickerController, animated: true, completion: nil)
+            }else
+            {
+                //未授予相册权限
+                return
+            }
+        })
+        let Cancel = UIAlertAction(title:"取消", style: .cancel, handler: nil)
+        LibraryOrCameraPicker.addAction(FromCamera)
+        LibraryOrCameraPicker.addAction(FromLibrary)
+        LibraryOrCameraPicker.addAction(Cancel)
+        present(LibraryOrCameraPicker, animated:true, completion:nil)
     }
     @IBAction func OnSeasonButtonPressed(_ sender: UIButton) //设置季节按钮动作
     {
@@ -285,15 +314,16 @@ class NewGarmentViewController: UIViewController,UITextFieldDelegate,UINavigatio
         if component == lefttypes
         {
             curLeftRow = row
+            pickerView.selectRow(0, inComponent: righttypes, animated: true)
             pickerView.reloadComponent(righttypes)
+            curLeft = largeclasses[curLeftRow]
+            curRight = subclasses[curLeftRow][0]
         }
         else
         {
             curRightRow = row
+             curRight = subclasses[curLeftRow][curRightRow]
         }
-        curLeft = largeclasses[curLeftRow]
-        curRight = subclasses[curLeftRow][curRightRow]
-        
     }
     
     //MARK: UIImagePickerController Delegate

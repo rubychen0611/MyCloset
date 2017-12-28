@@ -28,6 +28,7 @@ class CutImageViewController: UIViewController
                                          action: #selector(backToPrevious))
         rightBarBtn.image = #imageLiteral(resourceName: "save")
     self.navigationItem.rightBarButtonItem = rightBarBtn
+        self.title = "划动抠图"
     }
 
 //返回按钮点击响应

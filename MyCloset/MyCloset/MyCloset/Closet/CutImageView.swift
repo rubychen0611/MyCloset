@@ -11,12 +11,10 @@ import UIKit
 class CutImageView: UIView
 {
     private var ifCut = false   //是否已裁剪
-   // private var drawCount = 0
     private var points: [CGPoint] = []
     private var image: UIImage? = nil
     private var cutImage: UIImage? = nil
     private var cutImage_Adapt: UIImage? = nil
-    //private var imageView: UIImageView? = nil
     private var x :CGFloat = 0.0
     private var y :CGFloat = 0.0
     private var w :CGFloat = 0.0
@@ -24,10 +22,7 @@ class CutImageView: UIView
     
     public func setImage(image: UIImage)
     {
-        //self.image = image
-        //ifSecreenShot = false
-        //drawCount = 0
-        w = self.bounds.width
+        w = UIScreen.main.bounds.width//self.bounds.width
         h = w * image.size.height / image.size.width
         x = 0
         y = (self.bounds.height / 2.0) - (h / 2.0)
@@ -43,14 +38,7 @@ class CutImageView: UIView
    
     public func getImage() -> UIImage
     {
-       /* if ifCut == false
-        {
-            return self.image!
-        }
-        else
-        {*/
             return self.cutImage_Adapt!
-        //}
     }
     override func touchesBegan(_ touches: (Set<UITouch>!), with event: UIEvent!)
     {
@@ -124,20 +112,12 @@ class CutImageView: UIView
         {
             context.addLine(to: points[i])
         }
-        //context.strokePath()
         if ifCut == true
         {
             context.closePath()
-            //context.addRect(self.bounds)
-            //context.setFillColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.5)
-            //context.fillPath(using: .evenOdd)
-            //context.CGPathDrawingMode = .eoFill
 
         }
         context.strokePath()
-        
-        //UIGraphicsEndImageContext()
-
     }
 }
 
@@ -229,9 +209,12 @@ extension UIImage
         outputRect.size.width *= self.scale
         outputRect.size.height*=self.scale
             
-        let imageRef = self.cgImage!.cropping(to: outputRect)
-        let image = UIImage(cgImage: imageRef!, scale: self.scale, orientation: self.imageOrientation)
-        return image
+        if let imageRef = self.cgImage!.cropping(to: outputRect)
+        {
+            let image = UIImage(cgImage: imageRef, scale: self.scale, orientation: self.imageOrientation)
+            return image
+        }
+        return self
     }
     func reSizeImage(reSize:CGSize) -> UIImage    //改变图片大小
     {
@@ -250,23 +233,5 @@ extension UIImage
             UIGraphicsEndImageContext()
             return newImage!
     }
-  /*  func addBorder() -> UIImage?
-    {
-            let width :CGFloat = 3.0
-            let color = UIColor.gray
-            let square = CGSize(width: min(size.width, size.height) + width * 2, height: min(size.width, size.height) + width * 2)
-            let imageView = UIImageView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: square))
-            imageView.contentMode = .scaleToFill
-            imageView.image = self
-            //imageView.layer.cornerRadius = square.width/2
-            //imageView.layer.masksToBounds = true
-            imageView.layer.borderWidth = width
-            imageView.layer.borderColor = color.cgColor
-            UIGraphicsBeginImageContextWithOptions(imageView.bounds.size, false, scale)
-            guard let context = UIGraphicsGetCurrentContext() else { return nil }
-            imageView.layer.render(in: context)
-            let result = UIGraphicsGetImageFromCurrentImageContext()
-            UIGraphicsEndImageContext()
-            return result
-    }*/
+  
 }

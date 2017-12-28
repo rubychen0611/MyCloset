@@ -36,6 +36,9 @@
 		4458D5411FDB93260003E0C2 /* MatchCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4458D5401FDB93260003E0C2 /* MatchCollectionViewController.swift */; };
 		4458D5431FDBCC100003E0C2 /* MatchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4458D5421FDBCC100003E0C2 /* MatchCollectionViewCell.swift */; };
 		447D3F861FC963E2006F5A17 /* NewGarmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447D3F851FC963E2006F5A17 /* NewGarmentViewController.swift */; };
+		44B91B681FF4923900EC88EB /* ShakeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B91B671FF4923900EC88EB /* ShakeViewController.swift */; };
+		44B91B7B1FF49F0E00EC88EB /* rock_end.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 44B91B791FF49F0E00EC88EB /* rock_end.mp3 */; };
+		44B91B7C1FF49F0E00EC88EB /* rock.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 44B91B7A1FF49F0E00EC88EB /* rock.mp3 */; };
 		44D2329C1FBE8950002243B2 /* ContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D2329B1FBE8950002243B2 /* ContentCell.swift */; };
 		44E814651FC1A4EB00A5A6EE /* ClosetCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E814641FC1A4EB00A5A6EE /* ClosetCollectionReusableView.swift */; };
 		44E8146A1FC3068A00A5A6EE /* ClothesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E814691FC3068A00A5A6EE /* ClothesViewController.swift */; };
@@ -112,6 +115,9 @@
 		4458D5401FDB93260003E0C2 /* MatchCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchCollectionViewController.swift; sourceTree = "<group>"; };
 		4458D5421FDBCC100003E0C2 /* MatchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchCollectionViewCell.swift; sourceTree = "<group>"; };
 		447D3F851FC963E2006F5A17 /* NewGarmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGarmentViewController.swift; sourceTree = "<group>"; };
+		44B91B671FF4923900EC88EB /* ShakeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeViewController.swift; sourceTree = "<group>"; };
+		44B91B791FF49F0E00EC88EB /* rock_end.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rock_end.mp3; sourceTree = "<group>"; };
+		44B91B7A1FF49F0E00EC88EB /* rock.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rock.mp3; sourceTree = "<group>"; };
 		44D2329B1FBE8950002243B2 /* ContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCell.swift; sourceTree = "<group>"; };
 		44E814641FC1A4EB00A5A6EE /* ClosetCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetCollectionReusableView.swift; sourceTree = "<group>"; };
 		44E814691FC3068A00A5A6EE /* ClothesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothesViewController.swift; sourceTree = "<group>"; };
@@ -158,6 +164,7 @@
 		441B472A1FBD7D7F00D421BB /* MyCloset */ = {
 			isa = PBXGroup;
 			children = (
+				44B91B781FF49EDF00EC88EB /* MP3 */,
 				4458D5281FD6DF830003E0C2 /* Match */,
 				441F605E1FD4107900331F80 /* Calendar */,
 				44E814661FC1A4F600A5A6EE /* Closet */,
@@ -196,6 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				441B474D1FBD7E6400D421BB /* CalendarViewController.swift */,
+				44B91B671FF4923900EC88EB /* ShakeViewController.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -224,6 +232,15 @@
 				4458D5421FDBCC100003E0C2 /* MatchCollectionViewCell.swift */,
 			);
 			path = Match;
+			sourceTree = "<group>";
+		};
+		44B91B781FF49EDF00EC88EB /* MP3 */ = {
+			isa = PBXGroup;
+			children = (
+				44B91B791FF49F0E00EC88EB /* rock_end.mp3 */,
+				44B91B7A1FF49F0E00EC88EB /* rock.mp3 */,
+			);
+			path = MP3;
 			sourceTree = "<group>";
 		};
 		44E814661FC1A4F600A5A6EE /* Closet */ = {
@@ -353,6 +370,8 @@
 				441D3B391FE962310089FA65 /* WDColorPickerView.xib in Resources */,
 				441B47331FBD7D8000D421BB /* Assets.xcassets in Resources */,
 				441B47311FBD7D8000D421BB /* Main.storyboard in Resources */,
+				44B91B7B1FF49F0E00EC88EB /* rock_end.mp3 in Resources */,
+				44B91B7C1FF49F0E00EC88EB /* rock.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,6 +405,7 @@
 				4458D52E1FD6E03F0003E0C2 /* LargeClassTableViewController.swift in Sources */,
 				441D3B3A1FE962310089FA65 /* WDColorPickerView.swift in Sources */,
 				441B472C1FBD7D8000D421BB /* AppDelegate.swift in Sources */,
+				44B91B681FF4923900EC88EB /* ShakeViewController.swift in Sources */,
 				44D2329C1FBE8950002243B2 /* ContentCell.swift in Sources */,
 				18A31C9E1FCC04D50010CF15 /* GlobalVariables.swift in Sources */,
 				441B474C1FBD7E4F00D421BB /* ClosetViewController.swift in Sources */,
@@ -553,7 +573,7 @@
 				DEVELOPMENT_TEAM = 2VWVJ436YF;
 				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = MyCloset/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.edu.nju.MyCloset;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -571,7 +591,7 @@
 				DEVELOPMENT_TEAM = 2VWVJ436YF;
 				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = MyCloset/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.edu.nju.MyCloset;
 				PRODUCT_NAME = "$(TARGET_NAME)";

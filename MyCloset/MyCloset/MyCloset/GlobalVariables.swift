@@ -12,7 +12,7 @@ import Foundation
     var curSelectedLargeClass = 0
     var curSelectedSubclass = 0
     public let largeclasses = ["上衣","下装","外套","连衣裙","鞋子","包","配饰"]
-    public let subclasses = [["短袖", "T袖", "衬衫", "卫衣", "马甲", "其他上衣"],
+    public let subclasses = [["短袖", "T袖", "衬衫", "卫衣", "毛衣", "马甲", "其他上衣"],
                              ["牛仔裤","短裤","运动裤","七分裤","阔腿裤","半裙","长裙","其他下装"],
                              ["夹克", "风衣", "大衣", "羽绒服", "棉袄", "棒球服", "其他外套"],
                              ["短连衣裙", "长连衣裙", "其他连衣裙"],
