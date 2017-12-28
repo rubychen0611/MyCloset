@@ -80,7 +80,7 @@ class BackgroundView: UIView
             let rand:Int = Int(arc4random()) % tops.count
             let image = tops[rand].photo
             let newImageView = GarmentPhotoView(frame: CGRect(x: Int(x), y: y, width:180, height: 180),image:image)
-            y += 200
+            y += 180
             self.addNewPhotoView(newImageView)
         }
         if(!pants.isEmpty)
