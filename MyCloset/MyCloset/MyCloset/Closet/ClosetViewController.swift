@@ -28,13 +28,6 @@ class ClosetViewController: UIViewController, UITableViewDataSource, UITableView
         super.viewDidLoad()
         
         tableView.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .none)
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning()
-    {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func viewWillAppear(_ animated: Bool)
@@ -128,15 +121,13 @@ class ClosetViewController: UIViewController, UITableViewDataSource, UITableView
         var reuseIdentifier : String?
         if kind == UICollectionElementKindSectionHeader
         {
-            reuseIdentifier = "CollectionReusableView"//kCollectionViewHeaderView
+            reuseIdentifier = "CollectionReusableView"
         }
         
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: reuseIdentifier!, for: indexPath) as! ClosetCollectionReusableView
         
         if kind == UICollectionElementKindSectionHeader
         {
-            //let model = dataSource[indexPath.section]
-           // view.setDatas(model)
             header.label.text = largeclasses[indexPath.section]
         }
         return header

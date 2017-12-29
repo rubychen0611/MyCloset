@@ -100,7 +100,6 @@ class CalendarViewController: UIViewController, GCCalendarViewDelegate, CLLocati
         let longitude_2 = String(format: "%.2f", longitude!)
         let latitude_2 = String(format: "%.2f", latitude!)
         let str = "https://api.seniverse.com/v3/weather/now.json?key=b80incxtoazyui2b&location=\(latitude_2):\(longitude_2)&language=zh-Hans&unit=c"  //经纬度定位
-        //let str = "https://api.seniverse.com/v3/weather/now.json?key=b80incxtoazyui2b&location=ip&language=zh-Hans&unit=c"    //ip定位
         let url = NSURL(string: str)
         let data = NSData(contentsOf: url! as URL)
         
