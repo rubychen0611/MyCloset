@@ -9,7 +9,7 @@ app主要由分栏控制器控制的三个主界面衣橱、日历、搭配构�
 
 ### 衣橱
 ####  1、分类界面
-!(https://github.com/rubychen0611/MyCloset/raw/master/screenshots/1.png)
+!(https://github.com/rubychen0611/MyCloset/raw/master/MyCloset/screenshots/1.png)
 由一个Table View和一个Collection View联动构成，主要实现原理是当用户选择Tableview中的某项时，同时控制Collecion view的跳转，而当用户滑动Collection View时，也需要控制Table View的选择情况。
 ####  2、衣橱界面
 由一个UICollectionViewController控制的Collection View构成，显示该子分类下的所有衣服的图片，点开可显示衣服的详情页面并修改。长按某一件衣服会出现提示框，点确定后可删除。
