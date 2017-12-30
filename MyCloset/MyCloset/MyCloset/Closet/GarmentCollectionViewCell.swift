@@ -11,5 +11,8 @@ import UIKit
 class GarmentCollectionViewCell: UICollectionViewCell {
     //MARK:Properties
     @IBOutlet weak var photoImageView: UIImageView!
+    @IBOutlet weak var removeButton: UIButton!
     
+  
+   
 }

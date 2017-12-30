@@ -15,18 +15,97 @@ import os.log
 class ClothesViewController: UIViewController,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
 {
     //MARK:Properties
-    
+    @IBOutlet weak var finishEditingButton: UIBarButtonItem!
+    var isEdit = false
+    var touchPoint: CGPoint? = nil
    // var garment :Garment
     @IBOutlet weak var collectionView: UICollectionView!
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
-        
+        isEdit = false
+        let clv = self.collectionView
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(longPressGesture(_:)))
+        clv?.addGestureRecognizer(longPressGesture)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapGesture(_:)))
+        clv?.addGestureRecognizer(tapGesture)
         self.title = subclasses[curSelectedLargeClass][curSelectedSubclass]
         
     }
+    @objc func deleteItem() {
+        
+        if let p = touchPoint
+        {
+        if let indexPath = self.collectionView?.indexPathForItem(at: p)
+        {
+            closet[curSelectedLargeClass][curSelectedSubclass].remove(at:indexPath.row)
+            collectionView.reloadData()
+            saveClothes()
+            }
+        }
+    }
+    @IBAction func onEditPressed(_ sender: UIBarButtonItem)
+    {
+        
+        if isEdit == false
+        {
+            finishEditingButton.title = "完成"
+            for cell in self.collectionView.visibleCells
+            {
+                let garmentCell :GarmentCollectionViewCell = cell as! GarmentCollectionViewCell
+                garmentCell.removeButton.isHidden = false
+                garmentCell.removeButton.addTarget(self, action: #selector(self.deleteItem), for: .touchUpInside)
+            }
+            isEdit = true
+        }
+        else
+        {
+            finishEditingButton.title = "编辑"
+            for cell in self.collectionView.visibleCells
+            {
+                let garmentCell :GarmentCollectionViewCell = cell as! GarmentCollectionViewCell
+                garmentCell.removeButton.isHidden = true
+            }
+            isEdit = false
+        }
+    }
+    //MARK:手势响应
+    @objc private func tapGesture(_ recognizer:UILongPressGestureRecognizer)
+    {
+        if recognizer.state != .ended
+        {
+            return
+        }
+        touchPoint = recognizer.location(in: self.collectionView)
+        if isEdit == true
+        {
+            
+        }
+        else
+        {
+            if let indexPath = self.collectionView.indexPathForItem(at: touchPoint!)
+            {
+                let cell :GarmentCollectionViewCell = self.collectionView.cellForItem(at: indexPath) as! GarmentCollectionViewCell
+                    self.performSegue(withIdentifier: "ShowDetail", sender: cell)
 
+            
+            }
+        }
+    }
+     @objc private func longPressGesture(_ recognizer:UILongPressGestureRecognizer)
+     {
+        if isEdit == false
+        {
+            finishEditingButton.title = "完成"
+            for cell in self.collectionView.visibleCells
+            {
+                let garmentCell :GarmentCollectionViewCell = cell as! GarmentCollectionViewCell
+                garmentCell.removeButton.isHidden = false
+                garmentCell.removeButton.addTarget(self, action: #selector(self.deleteItem), for: .touchUpInside)
+            }
+            isEdit = true
+        }
+     }
 
     //MARK:CollectionView代理方法
     func numberOfSections(in collectionView: UICollectionView) -> Int
@@ -41,6 +120,14 @@ class ClothesViewController: UIViewController,UICollectionViewDataSource, UIColl
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GarmentCollectionViewCell", for: indexPath) as! GarmentCollectionViewCell
         let garment = closet[curSelectedLargeClass][curSelectedSubclass][indexPath.row]
         cell.photoImageView.image = garment.photo
+        if isEdit == false
+        {
+            cell.removeButton.isHidden = true
+        }
+        else
+        {
+            cell.removeButton.isHidden = false
+        }
         return cell
     }
     
