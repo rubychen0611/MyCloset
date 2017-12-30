@@ -77,13 +77,7 @@ class NewGarmentViewController: UIViewController,UITextFieldDelegate,UINavigatio
         // Do any additional setup after loading the view.
     }
 
-    /* func viewWillAppear(_ animated: Bool)
-    {
-        if GarmentImage.image == #imageLiteral(resourceName: "defaultPhoto") && curSelectedPhoto != #imageLiteral(resourceName: "defaultPhoto")
-        {
-            GarmentImage.image = curSelectedPhoto
-        }
-    }*/
+   
     //MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -115,26 +109,14 @@ class NewGarmentViewController: UIViewController,UITextFieldDelegate,UINavigatio
         garment = Garment(photo: photo!, largeclass:largeclass, subclass: subclass, season: season, brand: brand, price : price, boughtdate: boughtdate, extrainfo: extrainfo)
     }
     //MARK: Actions
-    @IBAction func cancel(_ sender: UIBarButtonItem) //判断有问题未解决！！
+    @IBAction func cancel(_ sender: UIBarButtonItem)
     {
-       // print(presentingViewController)
-       // print("deinit: \(NSStringFromClass(type(of: self.presentingViewController) as! AnyClass))")
+       
         dismiss(animated: true, completion: nil)
-       /* let isPresentingInAddGarmentMode = presentingViewController is UINavigationController //判断是否正添加新衣服
-        
-       if isPresentingInAddGarmentMode
-        {
-            dismiss(animated: true, completion: nil)
-        }
-        else*/
         if let owningNavigationController = navigationController
         {
            owningNavigationController.popViewController(animated: true)
         }
-        /*else
-        {
-            fatalError("The NegGarmentViewController is not inside a navigation controller.")
-        }*/
     }
     
     /*解决键盘遮挡输入框问题*/
@@ -187,7 +169,6 @@ class NewGarmentViewController: UIViewController,UITextFieldDelegate,UINavigatio
       
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
-        // self.navigationController.delegate = self
         
         let LibraryOrCameraPicker = UIAlertController(title:"选择相机或相册",message: nil, preferredStyle: .actionSheet)
         let FromCamera = UIAlertAction(title: "相机", style: .default, handler: {action in

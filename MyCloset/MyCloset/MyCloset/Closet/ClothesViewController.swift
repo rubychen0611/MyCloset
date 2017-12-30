@@ -10,101 +10,45 @@ import UIKit
 import os.log
 
 
-//var ifAddingNewGarment = false;
-
 class ClothesViewController: UIViewController,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
 {
-    //MARK:Properties
-    @IBOutlet weak var finishEditingButton: UIBarButtonItem!
-    var isEdit = false
-    var touchPoint: CGPoint? = nil
-   // var garment :Garment
+
+
     @IBOutlet weak var collectionView: UICollectionView!
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        isEdit = false
         let clv = self.collectionView
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(longPressGesture(_:)))
         clv?.addGestureRecognizer(longPressGesture)
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapGesture(_:)))
-        clv?.addGestureRecognizer(tapGesture)
         self.title = subclasses[curSelectedLargeClass][curSelectedSubclass]
         
     }
-    @objc func deleteItem() {
-        
-        if let p = touchPoint
-        {
-        if let indexPath = self.collectionView?.indexPathForItem(at: p)
-        {
-            closet[curSelectedLargeClass][curSelectedSubclass].remove(at:indexPath.row)
-            collectionView.reloadData()
-            saveClothes()
-            }
-        }
-    }
-    @IBAction func onEditPressed(_ sender: UIBarButtonItem)
-    {
-        
-        if isEdit == false
-        {
-            finishEditingButton.title = "完成"
-            for cell in self.collectionView.visibleCells
-            {
-                let garmentCell :GarmentCollectionViewCell = cell as! GarmentCollectionViewCell
-                garmentCell.removeButton.isHidden = false
-                garmentCell.removeButton.addTarget(self, action: #selector(self.deleteItem), for: .touchUpInside)
-            }
-            isEdit = true
-        }
-        else
-        {
-            finishEditingButton.title = "编辑"
-            for cell in self.collectionView.visibleCells
-            {
-                let garmentCell :GarmentCollectionViewCell = cell as! GarmentCollectionViewCell
-                garmentCell.removeButton.isHidden = true
-            }
-            isEdit = false
-        }
-    }
-    //MARK:手势响应
-    @objc private func tapGesture(_ recognizer:UILongPressGestureRecognizer)
-    {
-        if recognizer.state != .ended
-        {
-            return
-        }
-        touchPoint = recognizer.location(in: self.collectionView)
-        if isEdit == true
-        {
-            
-        }
-        else
-        {
-            if let indexPath = self.collectionView.indexPathForItem(at: touchPoint!)
-            {
-                let cell :GarmentCollectionViewCell = self.collectionView.cellForItem(at: indexPath) as! GarmentCollectionViewCell
-                    self.performSegue(withIdentifier: "ShowDetail", sender: cell)
 
-            
-            }
-        }
-    }
+
+    //MARK:手势响应
+   
      @objc private func longPressGesture(_ recognizer:UILongPressGestureRecognizer)
      {
-        if isEdit == false
+        let touchPoint = recognizer.location(in: self.collectionView)
+        if let indexPath = self.collectionView.indexPathForItem(at: touchPoint)
         {
-            finishEditingButton.title = "完成"
-            for cell in self.collectionView.visibleCells
-            {
-                let garmentCell :GarmentCollectionViewCell = cell as! GarmentCollectionViewCell
-                garmentCell.removeButton.isHidden = false
-                garmentCell.removeButton.addTarget(self, action: #selector(self.deleteItem), for: .touchUpInside)
-            }
-            isEdit = true
+            let message = "确定要删除牌子为 " + closet[curSelectedLargeClass][curSelectedSubclass][indexPath.row].brand + " 的这件衣服吗？"
+            let alertController = UIAlertController(title: "提示", message: message, preferredStyle: .alert)
+            let sureAction = UIAlertAction(title: "确定", style: .destructive, handler: {
+                action in
+                closet[curSelectedLargeClass][curSelectedSubclass].remove(at:indexPath.row)
+                self.collectionView.reloadData()
+                self.saveClothes()
+            })
+            let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+            alertController.addAction(sureAction)
+            alertController.addAction(cancelAction)
+            self.present(alertController, animated: true, completion: nil)
+         
+            
         }
+  
      }
 
     //MARK:CollectionView代理方法
@@ -120,14 +64,7 @@ class ClothesViewController: UIViewController,UICollectionViewDataSource, UIColl
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GarmentCollectionViewCell", for: indexPath) as! GarmentCollectionViewCell
         let garment = closet[curSelectedLargeClass][curSelectedSubclass][indexPath.row]
         cell.photoImageView.image = garment.photo
-        if isEdit == false
-        {
-            cell.removeButton.isHidden = true
-        }
-        else
-        {
-            cell.removeButton.isHidden = false
-        }
+        
         return cell
     }
     
@@ -160,11 +97,9 @@ class ClothesViewController: UIViewController,UICollectionViewDataSource, UIColl
             else
             {
             // Add a new garment
-           // let newIndexPath = IndexPath(row: closet[garment.largeclass][garment.subclass].count, section: 0)
             
                 closet[garment.largeclass][garment.subclass].append(garment)
                 collectionView.reloadData()
-               // collectionView.insertItems(at: [newIndexPath])
                 
             }
                 saveClothes()
@@ -202,4 +137,6 @@ class ClothesViewController: UIViewController,UICollectionViewDataSource, UIColl
             fatalError("Unexpected Segue Identifier; \(String(describing: segue.identifier))")
         }
     }
+    
+    
 }

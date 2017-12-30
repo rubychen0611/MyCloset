@@ -108,6 +108,8 @@ class Garment :NSObject, NSCoding //单件衣服
         let photo2 = UIImage(named: "shortsleeves_2")
         let photo3 = UIImage(named: "T-shirt_1")
         let photo4 = UIImage(named: "jeans_1")
+        let photo5 = UIImage(named: "pants_1")
+        let photo6 = UIImage(named: "shoes_1")
         
         guard let shortsleeves_1 = Garment(photo: photo1!, largeclass: 0, subclass : 0, season: Season.summer, brand: "me&co", price: "129", boughtdate : nil, extrainfo : "") else {
             fatalError("Unable to instantiate shortsleeves1")
@@ -122,10 +124,18 @@ class Garment :NSObject, NSCoding //单件衣服
         guard let jeans_1 = Garment(photo: photo4!, largeclass: 1, subclass : 0, season: Season.springautumn, brand: "esprit", price: "300", boughtdate : nil, extrainfo : "") else {
                 fatalError("Unable to instantiate jeans1")
         }
+        guard let pants_1 = Garment(photo: photo5!, largeclass: 1, subclass : 3, season: Season.springautumn, brand: "nike", price: "400", boughtdate : nil, extrainfo : "") else {
+            fatalError("Unable to instantiate pants1")
+        }
+        guard let shoes_1 = Garment(photo: photo6!, largeclass: 4, subclass : 1, season: Season.springautumn, brand: "teenmix", price: "350", boughtdate : nil, extrainfo : "") else {
+            fatalError("Unable to instantiate shoes1")
+        }
         
         closet[0][0].append(shortsleeves_1)
         closet[0][0].append(shortsleeves_2)
         closet[0][1].append(T_shirt_1)
         closet[1][0].append(jeans_1)
+        closet[1][3].append(pants_1)
+        closet[4][1].append(shoes_1)
     }
 }
