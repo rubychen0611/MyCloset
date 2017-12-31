@@ -34,7 +34,7 @@ app主要由分栏控制器控制的三个主界面衣橱、日历、搭配构�
 #### 1、实时天气
 ![](https://github.com/rubychen0611/MyCloset/raw/master/MyCloset/screenshots/9.png)
 
-实时天气功能的实现需要先用CLLocalManager定位获得当前用户所在位置的经纬度，然后向免费天气API心知天气请求数据获得实时天气。其中定位要求知道所在城市即可，所以精度设置为百米内。得到经纬度数据之后，在LocalManager的代理方法didUpdateLocations中利用OperationQueue新建一个线程通过网络通信请求天气数据，这样即使用户当前可能没有连接互联网，也不会阻塞UI，获取失败后通过异常处理机制在界面显示失败。解析天气数据时还需要熟悉JSON的形式和语法，才能正确地显示实时天气的图片、温度等数据。
+实时天气功能的实现需要先用CLLocalManager定位获得当前用户所在位置的经纬度（模拟器需要先设置定位在中国境内），然后向免费天气API心知天气请求数据获得实时天气。其中定位要求知道所在城市即可，所以精度设置为百米内。得到经纬度数据之后，在LocalManager的代理方法didUpdateLocations中利用OperationQueue新建一个线程通过网络通信请求天气数据，这样即使用户当前可能没有连接互联网，也不会阻塞UI，获取失败后通过异常处理机制在界面显示失败。解析天气数据时还需要熟悉JSON的形式和语法，才能正确地显示实时天气的图片、温度等数据。
 ####  2、日历控件
 采用了第三方控件GCCalendar，主要实现了代理方法didSelectDate，当用户选择日期时，刷新上方搭配的ImageView。
 #### 3、添加搭配界面
@@ -45,7 +45,7 @@ app主要由分栏控制器控制的三个主界面衣橱、日历、搭配构�
 ![](https://github.com/rubychen0611/MyCloset/raw/master/MyCloset/screenshots/7.png)
 ![](https://github.com/rubychen0611/MyCloset/raw/master/MyCloset/screenshots/8.png)
 
-点击摇一摇按钮，会出现类似微信摇一摇的黑色界面，用户摇动手机，动画和音效之后会显示添加搭配界面，但该界面上不是空白，而是随机的由用户一件上衣、一件下装、一双鞋组成的搭配，如不满意，用户可以在当前界面修改这个搭配或者返回摇一摇界面重新摇。
+点击摇一摇按钮，会出现类似微信摇一摇的黑色界面，用户摇动手机（模拟器可选择Hardware菜单中的Shake gesture模拟），动画和音效之后会显示添加搭配界面，但该界面上不是空白，而是随机的由用户一件上衣、一件下装、一双鞋组成的搭配，如不满意，用户可以在当前界面修改这个搭配或者返回摇一摇界面重新摇。
 
 摇一摇功能的实现比较简单，只要在ViewController中重写motionBegan方法和motionEnded方法即可，开始摇动时通过动画效果控制两张图片分别上移和下移，再返回原处，同时用AVAudioPlayer播放音效。摇动结束后创建一个搭配界面的ViewController并在闭包中调用随机选择衣服的方法，创建三个GarmentPhotoView并由上自下显示在界面中央。如果用户还没有添加过鞋子等，便不显示。
 ###  搭配
